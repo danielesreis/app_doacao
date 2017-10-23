@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { MaterialPage } from '../material/material';
+import { DinheiroPage } from '../dinheiro/dinheiro';
+import { VoluntariadoPage } from '../voluntariado/voluntariado';
 
 /**
  * Generated class for the DoarPage page.
@@ -18,8 +21,16 @@ export class DoarPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DoarPage');
+  showDoarMaterial() {
+	this.navCtrl.push(MaterialPage);
+  }
+
+  showDoarDinheiro() {
+   	this.navCtrl.push(DinheiroPage);
+  }
+
+  showVoluntariado() {
+	this.navCtrl.push(VoluntariadoPage);
   }
 
 }

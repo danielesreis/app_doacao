@@ -8,13 +8,19 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ConhecerPage } from '../pages/conhecer/conhecer';
 import { DoarPage } from '../pages/doar/doar';
+import { MaterialPage } from '../pages/material/material';
+import { DinheiroPage } from '../pages/dinheiro/dinheiro';
+import { VoluntariadoPage } from '../pages/voluntariado/voluntariado';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ConhecerPage,
-    DoarPage
+    DoarPage,
+    MaterialPage,
+    DinheiroPage,
+    VoluntariadoPage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +31,10 @@ import { DoarPage } from '../pages/doar/doar';
     MyApp,
     HomePage,
     ConhecerPage,
-    DoarPage
+    DoarPage,
+    MaterialPage,
+    DinheiroPage,
+    VoluntariadoPage
    ],
   providers: [
     StatusBar,
