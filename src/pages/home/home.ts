@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { conhecerPage } from '../conhecer/conhecer';
+import { ConhecerPage } from '../conhecer/conhecer';
 
 @Component({
   selector: 'page-home',
@@ -13,6 +13,6 @@ export class HomePage {
     }
 
     showConhecer() {
-	this.navCtrl.push(conhecerPage);
+	this.navCtrl.push(ConhecerPage);
 	}
 }
