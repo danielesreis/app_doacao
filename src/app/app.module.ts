@@ -11,6 +11,10 @@ import { DoarPage } from '../pages/doar/doar';
 import { MaterialPage } from '../pages/material/material';
 import { DinheiroPage } from '../pages/dinheiro/dinheiro';
 import { VoluntariadoPage } from '../pages/voluntariado/voluntariado';
+import { PerfilPage } from '../pages/perfil/perfil';
+import { PontosPage } from '../pages/pontos/pontos';
+import { HistoricoPage } from '../pages/historico/historico';
+import { SobrePage } from '../pages/sobre/sobre';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { VoluntariadoPage } from '../pages/voluntariado/voluntariado';
     DoarPage,
     MaterialPage,
     DinheiroPage,
-    VoluntariadoPage
+    VoluntariadoPage,
+    PerfilPage,
+    PontosPage,
+    HistoricoPage,
+    SobrePage
   ],
   imports: [
     BrowserModule,
@@ -36,7 +44,11 @@ import { VoluntariadoPage } from '../pages/voluntariado/voluntariado';
     DoarPage,
     MaterialPage,
     DinheiroPage,
-    VoluntariadoPage
+    VoluntariadoPage,
+    PerfilPage,
+    PontosPage,
+    HistoricoPage,
+    SobrePage
    ],
   providers: [
     StatusBar,
