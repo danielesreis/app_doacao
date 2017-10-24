@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { MaterialPage } from '../material/material';
 import { DinheiroPage } from '../dinheiro/dinheiro';
 import { VoluntariadoPage } from '../voluntariado/voluntariado';
@@ -18,7 +18,7 @@ import { VoluntariadoPage } from '../voluntariado/voluntariado';
 })
 export class DoarPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController) {
   }
 
   showDoarMaterial() {
@@ -31,6 +31,10 @@ export class DoarPage {
 
   showVoluntariado() {
 	this.navCtrl.push(VoluntariadoPage);
+  }
+
+  ionViewDidEnter(){
+    this.menu.swipeEnable(false, 'menu_lateral');
   }
 
 }

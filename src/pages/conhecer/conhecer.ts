@@ -15,8 +15,9 @@ import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angul
 })
 export class ConhecerPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController) {
-  	this.menu = menu;
-  	this.menu.enable(false, 'menu_lateral')
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController) {}
+
+  ionViewDidEnter(){
+  	this.menu.swipeEnable(false, 'menu_lateral');
   }
 }
