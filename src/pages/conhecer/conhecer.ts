@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 
 /**
  * Generated class for the ConhecerPage page.
@@ -15,11 +15,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ConhecerPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController) {
+  	this.menu = menu;
+  	this.menu.enable(false, 'menu_lateral')
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ConhecerPage');
-  }
-
 }

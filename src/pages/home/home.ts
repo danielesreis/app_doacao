@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 import { ConhecerPage } from '../conhecer/conhecer';
 import { DoarPage } from '../doar/doar';
 
@@ -9,7 +9,13 @@ import { DoarPage } from '../doar/doar';
 })
 export class HomePage {
 
-	constructor(public navCtrl: NavController) {
+	constructor(public navCtrl: NavController, public menu: MenuController) {
+		this.menu = menu;
+		if (menu.enabled == false)
+		{
+			console.log("ihu");
+			this.menu.enable(true, 'menu_lateral');
+		}
   
     }
 

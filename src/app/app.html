@@ -1,1 +1,14 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu id="menu_lateral" [content]="mycontent">
+	<ion-content>
+		<ion-list>
+			<button ion-item menuClose (click)="showPerfil()">Meu Perfil</button>
+			<button ion-item menuClose (click)="showPontos()">Meus Pontos</button>
+			<button ion-item menuClose (click)="showHistorico()">Histórico de doações</button>
+			<button ion-item menuClose>Sair</button>
+			<button ion-item menuClose (click)="showSobre()">Sobre</button>
+			<button ion-item menuClose>Avalie este aplicativo :-)</button>
+		</ion-list>
+	</ion-content>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>

@@ -24,7 +24,9 @@ import { VoluntariadoPage } from '../pages/voluntariado/voluntariado';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      menuType: 'push'
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

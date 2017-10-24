@@ -18,5 +18,21 @@ export class MyApp {
       splashScreen.hide();
     });
   }
+
+  showPerfil(){
+    this.navCtrl.push(MaterialPage);
+  }
+
+  showPontos(){
+    this.navCtrl.push(MaterialPage);
+  }
+
+  showHistorico(){
+    this.navCtrl.push(MaterialPage);
+  }
+
+  showSobre(){
+    this.navCtrl.push(MaterialPage);
+  }
 }
 
