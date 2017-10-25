@@ -6,6 +6,29 @@
 -->
 <ion-content padding>
 
+<ion-list>
 	<h4>Filtrar pesquisa</h4>
+	<ion-item>
+		<ion-input placeholder="Instituição"></ion-input>
+	</ion-item>
+
+	<ion-item>
+		<ion-label>Localização</ion-label>
+		<ion-select interface="popover">
+			<ion-option value="loc_juazeiro" selected="true">Juazeiro</ion-option>
+			<ion-option value="loc_petrolina">Petrolina</ion-option>
+		</ion-select>
+	</ion-item>
+
+	<ion-item>
+		<ion-label>Categoria</ion-label>
+		<ion-select interface="popover" multiple="true">
+			<ion-option value="cat1" selected="true">Móveis</ion-option>
+			<ion-option value="cat2">Brinquedos</ion-option>
+			<ion-option value="cat3">Remédios</ion-option>
+			<ion-option value="cat4">Material escolar</ion-option>
+		</ion-select>
+	</ion-item>
+</ion-list>
 
 </ion-content>
