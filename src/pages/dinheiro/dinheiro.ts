@@ -22,4 +22,8 @@ export class DinheiroPage {
     this.menu.swipeEnable(false, 'menu_lateral');
   }
 
+  showDoar() {
+  	this.navCtrl.pop();
+  }
+
 }
