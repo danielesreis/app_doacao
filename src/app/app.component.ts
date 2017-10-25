@@ -10,6 +10,7 @@ import { Inst1Page } from '../pages/inst1/inst1';
 import { Inst2Page } from '../pages/inst2/inst2';
 import { Inst3Page } from '../pages/inst3/inst3';
 import { Inst4Page } from '../pages/inst4/inst4';
+import { SearchPage } from '../pages/search/search';
 
 import { HomePage } from '../pages/home/home';
 @Component({
