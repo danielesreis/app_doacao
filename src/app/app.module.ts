@@ -15,6 +15,10 @@ import { PerfilPage } from '../pages/perfil/perfil';
 import { PontosPage } from '../pages/pontos/pontos';
 import { HistoricoPage } from '../pages/historico/historico';
 import { SobrePage } from '../pages/sobre/sobre';
+import { Inst1Page } from '../pages/inst1/inst1';
+import { Inst2Page } from '../pages/inst2/inst2';
+import { Inst3Page } from '../pages/inst3/inst3';
+import { Inst4Page } from '../pages/inst4/inst4';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { SobrePage } from '../pages/sobre/sobre';
     PerfilPage,
     PontosPage,
     HistoricoPage,
-    SobrePage
+    SobrePage,
+    Inst1Page,
+    Inst2Page,
+    Inst3Page,
+    Inst4Page
   ],
   imports: [
     BrowserModule,
@@ -48,7 +56,12 @@ import { SobrePage } from '../pages/sobre/sobre';
     PerfilPage,
     PontosPage,
     HistoricoPage,
-    SobrePage
+    SobrePage,
+    Inst1Page,
+    Inst2Page,
+    Inst3Page,
+    Inst4Page
+    
    ],
   providers: [
     StatusBar,
