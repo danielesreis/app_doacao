@@ -7,8 +7,11 @@
 
 <ion-header>
   <ion-navbar>
-  <button ion-button end menuToggle="" menuClose="menu_lateral"(click)="openPopover($event)">
-  <ion-icon name="search"></ion-icon></button>
+  	<ion-buttons end>
+  		<button ion-button icon-only menuClose="menu_lateral" (click)="openPopover($event)">
+  			<ion-icon name="search"></ion-icon>
+  		</button>
+  	</ion-buttons>
     <ion-title>ONG's</ion-title>
   </ion-navbar>
 </ion-header>
