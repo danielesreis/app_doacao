@@ -17,7 +17,7 @@ export class HomePage {
   	this.menu.swipeEnable(false, 'menu_lateral');
   	}
 
-    showConhecer() {
+  showConhecer() {
 	this.navCtrl.push(ConhecerPage);
 	}
 

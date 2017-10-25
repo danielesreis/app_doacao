@@ -4,12 +4,6 @@ import { MaterialPage } from '../material/material';
 import { DinheiroPage } from '../dinheiro/dinheiro';
 import { VoluntariadoPage } from '../voluntariado/voluntariado';
 
-/**
- * Generated class for the DoarPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({

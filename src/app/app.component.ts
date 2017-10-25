@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Platform, NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Nav, Platform, Modal, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PerfilPage } from '../pages/perfil/perfil';
@@ -12,6 +12,7 @@ import { HomePage } from '../pages/home/home';
   templateUrl: 'app.html'
 })
 export class MyApp {
+  @ViewChild('mycontent') nav: NavController;
   rootPage:any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
@@ -24,19 +25,19 @@ export class MyApp {
   }
 
   showPerfil(){
-    this.navCtrl.push(PerfilPage);
+    this.nav.push(PerfilPage);
   }
 
   showPontos(){
-    this.navCtrl.push(PontosPage);
+    this.nav.push(PontosPage);
   }
 
   showHistorico(){
-    this.navCtrl.push(HistoricoPage);
+    this.nav.push(HistoricoPage);
   }
 
   showSobre(){
-    this.navCtrl.push(SobrePage);
+    this.nav.push(SobrePage);
   }
 }
 
