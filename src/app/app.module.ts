@@ -20,6 +20,8 @@ import { Inst2Page } from '../pages/inst2/inst2';
 import { Inst3Page } from '../pages/inst3/inst3';
 import { Inst4Page } from '../pages/inst4/inst4';
 import { SearchPage } from '../pages/search/search';
+import { LoginPage } from '../pages/login/login';
+import { CadastroPage } from '../pages/cadastro/cadastro';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { SearchPage } from '../pages/search/search';
     Inst2Page,
     Inst3Page,
     Inst4Page,
-    SearchPage
+    SearchPage,
+    LoginPage,
+    CadastroPage
   ],
   imports: [
     BrowserModule,
@@ -63,7 +67,9 @@ import { SearchPage } from '../pages/search/search';
     Inst2Page,
     Inst3Page,
     Inst4Page,
-    SearchPage
+    SearchPage,
+    LoginPage,
+    CadastroPage
    ],
   providers: [
     StatusBar,

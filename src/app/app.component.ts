@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, Modal, NavController } from 'ionic-angular';
+import { Nav, Platform, Modal, NavController, PopoverController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PerfilPage } from '../pages/perfil/perfil';
@@ -11,6 +11,8 @@ import { Inst2Page } from '../pages/inst2/inst2';
 import { Inst3Page } from '../pages/inst3/inst3';
 import { Inst4Page } from '../pages/inst4/inst4';
 import { SearchPage } from '../pages/search/search';
+import { LoginPage } from '../pages/login/login';
+import { CadastroPage } from '../pages/cadastro/cadastro';
 
 import { HomePage } from '../pages/home/home';
 @Component({
@@ -20,13 +22,18 @@ export class MyApp {
   @ViewChild('mycontent') nav: NavController;
   rootPage:any = HomePage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public popoverCtrl: PopoverController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+
+  openPopover(event) {
+    let popover = this.popoverCtrl.create(LoginPage);
+    popover.present ({ev: event});
   }
 
   showPerfil(){

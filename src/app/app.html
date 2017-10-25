@@ -1,6 +1,7 @@
 <ion-menu id="menu_lateral" [content]="mycontent" persistent="true">
 	<ion-content>
 		<ion-list>
+			<div (click)="openPopover($event)">Login</div>
 			<button ion-item menuClose (click)="showPerfil()">Meu Perfil</button>
 			<button ion-item menuClose (click)="showPontos()">Meus Pontos</button>
 			<button ion-item menuClose (click)="showHistorico()">Histórico de doações</button>
