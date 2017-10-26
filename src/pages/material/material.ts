@@ -21,4 +21,8 @@ export class MaterialPage {
   ionViewDidEnter(){
     this.menu.swipeEnable(false, 'menu_lateral');
   }
+
+  showDoar(){
+  	this.navCtrl.pop();
+  }
 }

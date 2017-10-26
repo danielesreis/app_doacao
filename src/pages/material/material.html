@@ -16,4 +16,66 @@
 
 <ion-content padding>
 
+	<h6>Selecione a instituição para onde deseja enviar seu donativo</h6>
+
+<ion-list>
+	<ion-item>
+		<ion-label>Instituições</ion-label>
+		<ion-select interface="popover">
+			<ion-option value="select_inst1" selected="true">Qualquer instituição</ion-option>
+			<ion-option value="select_inst2">Casa de apoio infantil Arte&Cultura</ion-option>
+			<ion-option value="select_inst3">Lar dos cachorrinhos felizes</ion-option>
+			<ion-option value="select_inst4">Fundação verde</ion-option>
+		</ion-select>
+	</ion-item>
+
+	<ion-item>
+		<ion-label>Estado de conservação</ion-label>
+		<ion-select interface="popover">
+			<ion-option value="select_status1" selected="true">Em condições de uso</ion-option>
+			<ion-option value="select_status2">Perfeito Estado</ion-option>
+			<ion-option value="select_status3">Precisa de reparos</ion-option>
+		</ion-select>
+	</ion-item>
+
+<h6>Descreva sua doação</h6>
+<ion-input placeholder="Digite Aqui"></ion-input>
+
+<h6>Tire uma fotografia do objeto</h6>
+
+<h6>Endereço de coleta</h6>
+
+<ion-list radio-group>
+	<ion-item>
+		<ion-label>Último endereço</ion-label>
+		<ion-radio value="ultimo_endereco"></ion-radio>
+	</ion-item>
+
+	<ion-item>
+		<ion-label>Novo endereço</ion-label>
+		<ion-radio value="novo_endereco"></ion-radio>
+	</ion-item>
+</ion-list>
+
+<h6>Melhor data e horário de coleta</h6>
+
+<ion-item>
+  <ion-label>Dia</ion-label>
+  <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD-MM-YYYY"></ion-datetime>
+</ion-item>
+
+<ion-item>
+  <ion-label>Hora inicial</ion-label>
+  <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+</ion-item>
+
+<ion-item>
+  <ion-label>Hora final</ion-label>
+  <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+</ion-item>
+
+<button ion-button block outline (click)="showDoar()">Concluir</button>
+
+</ion-list>
+
 </ion-content>
