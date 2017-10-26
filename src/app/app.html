@@ -1,7 +1,10 @@
 <ion-menu id="menu_lateral" [content]="mycontent" persistent="true">
 	<ion-content>
 		<ion-list>
-			<div (click)="openPopover($event)">Login</div>
+			<div (click)="openPopover($event)">
+				<img id="profile_pic" src="../assets/imgs/profile-pictures.png">
+			<h3>Login</h3>
+			</div>
 			<button ion-item menuClose (click)="showPerfil()">Meu Perfil</button>
 			<button ion-item menuClose (click)="showPontos()">Meus Pontos</button>
 			<button ion-item menuClose (click)="showHistorico()">Histórico de doações</button>

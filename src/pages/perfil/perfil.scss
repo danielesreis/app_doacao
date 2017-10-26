@@ -1,3 +1,20 @@
 page-perfil {
 
 }
+
+ion-icon[name="create"] {
+}
+
+#user_pic {
+	float: left;
+	width: 50%;
+	height: auto;
+}
+
+#user_pic img {
+	border-radius: 50%;
+}
+
+.row {
+	clear: both;
+}
