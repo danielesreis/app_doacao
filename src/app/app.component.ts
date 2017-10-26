@@ -10,6 +10,8 @@ import { InstPage } from '../pages/inst/inst';
 import { SearchPage } from '../pages/search/search';
 import { LoginPage } from '../pages/login/login';
 import { CadastroPage } from '../pages/cadastro/cadastro';
+import { DonateinfoPage } from '../pages/donateinfo/donateinfo';
+import { VolunteerinfoPage } from '../pages/volunteerinfo/volunteerinfo';
 
 import { HomePage } from '../pages/home/home';
 @Component({

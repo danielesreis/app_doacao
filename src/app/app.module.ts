@@ -19,6 +19,8 @@ import { InstPage } from '../pages/inst/inst';
 import { SearchPage } from '../pages/search/search';
 import { LoginPage } from '../pages/login/login';
 import { CadastroPage } from '../pages/cadastro/cadastro';
+import { DonateinfoPage } from '../pages/donateinfo/donateinfo';
+import { VolunteerinfoPage } from '../pages/volunteerinfo/volunteerinfo';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
     InstPage,
     SearchPage,
     LoginPage,
-    CadastroPage
+    CadastroPage,
+    DonateinfoPage,
+    VolunteerinfoPage
   ],
   imports: [
     BrowserModule,
@@ -60,7 +64,9 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
     InstPage,
     SearchPage,
     LoginPage,
-    CadastroPage
+    CadastroPage,
+    DonateinfoPage,
+    VolunteerinfoPage
    ],
   providers: [
     StatusBar,
