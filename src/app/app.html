@@ -1,18 +1,31 @@
 <ion-menu id="menu_lateral" [content]="mycontent" persistent="true">
 	<ion-content>
 		<ion-list>
-			<div (click)="openPopover($event)">
-				<img id="profile_pic" src="../assets/imgs/profile-pictures.png">
-			<h3>Login</h3>
+			<div *ngIf="user">
+				<div>
+					<img id="profile_pic" src="../assets/imgs/profile-pictures.png">
+				</div>
+				<button ion-item menuClose (click)="showPerfil()">Meu Perfil</button>
+				<button ion-item menuClose (click)="showPontos()">Meus Pontos</button>
+				<button ion-item menuClose (click)="showHistorico()">Histórico de doações</button>
+				<button ion-item menuClose>Sair</button>
 			</div>
-			<button ion-item menuClose (click)="showPerfil()">Meu Perfil</button>
-			<button ion-item menuClose (click)="showPontos()">Meus Pontos</button>
-			<button ion-item menuClose (click)="showHistorico()">Histórico de doações</button>
-			<button ion-item menuClose>Sair</button>
+			<h3  *ngIf="!user" (click)="openPopover($event)">Login</h3>
 			<button ion-item menuClose (click)="showSobre()">Sobre</button>
 			<button ion-item menuClose>Avalie este aplicativo :-)</button>
 		</ion-list>
 	</ion-content>
 </ion-menu>
-
+<ion-header>
+<ion-navbar hideBackButton>
+  <button ion-button menuToggle icon-only item-left><ion-icon name="menu"></ion-icon></button>
+  	<ion-buttons end>
+  		<button ion-button icon-only menuClose="menu_lateral" (click)="openPopover($event)">
+  			<ion-icon name="search"></ion-icon>
+  		</button>
+  	</ion-buttons>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
 <ion-nav #mycontent [root]="rootPage"></ion-nav>
+

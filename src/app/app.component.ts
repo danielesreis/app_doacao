@@ -12,15 +12,18 @@ import { LoginPage } from '../pages/login/login';
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { DonateinfoPage } from '../pages/donateinfo/donateinfo';
 import { VolunteerinfoPage } from '../pages/volunteerinfo/volunteerinfo';
+import { Globals } from './globals';
+import { InstituicaoService } from './service/instituicao.service';
 
 import { HomePage } from '../pages/home/home';
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [Globals]
 })
 export class MyApp {
   @ViewChild('mycontent') nav: NavController;
   rootPage:any = HomePage;
-
+  user = "";
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public popoverCtrl: PopoverController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -28,12 +31,15 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+    Globals.title = "Bem vindo ao DOAR!";
   }
 
   openPopover(event) {
     let popover = this.popoverCtrl.create(LoginPage);
     popover.present ({ev: event});
   }
+
+
 
   showPerfil(){
     this.nav.push(PerfilPage);
@@ -49,6 +55,9 @@ export class MyApp {
 
   showSobre(){
     this.nav.push(SobrePage);
+  }
+  get title(){
+    return Globals.title;
   }
 }
 
