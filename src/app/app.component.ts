@@ -14,6 +14,7 @@ import { DonateinfoPage } from '../pages/donateinfo/donateinfo';
 import { VolunteerinfoPage } from '../pages/volunteerinfo/volunteerinfo';
 import { Globals } from './globals';
 import { InstituicaoService } from './service/instituicao.service';
+import { AuthService } from './service/auth.service';
 
 import { HomePage } from '../pages/home/home';
 @Component({
@@ -23,8 +24,9 @@ import { HomePage } from '../pages/home/home';
 export class MyApp {
   @ViewChild('mycontent') nav: NavController;
   rootPage:any = HomePage;
-  user = "";
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public popoverCtrl: PopoverController) {
+  user = '';
+  email = '';
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public popoverCtrl: PopoverController, private auth: AuthService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -32,14 +34,21 @@ export class MyApp {
       splashScreen.hide();
     });
     Globals.title = "Bem vindo ao DOAR!";
+    /*let info = this.auth.getUserInfo();
+    this.user = info['name'];
+    this.email = info['email'];*/
+  }
+
+  public logout(){
+    this.auth.logout().subscribe(succ => {
+      this.nav.setRoot('HomePage')
+    });
   }
 
   openPopover(event) {
     let popover = this.popoverCtrl.create(LoginPage);
     popover.present ({ev: event});
   }
-
-
 
   showPerfil(){
     this.nav.push(PerfilPage);
@@ -59,5 +68,6 @@ export class MyApp {
   get title(){
     return Globals.title;
   }
+
 }
 

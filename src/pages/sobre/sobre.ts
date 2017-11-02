@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Globals } from '../../app/globals';
 
 /**
  * Generated class for the SobrePage page.
@@ -12,14 +13,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @Component({
   selector: 'page-sobre',
   templateUrl: 'sobre.html',
+  providers: [Globals]
 })
 export class SobrePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, globals:Globals) {
+  	Globals.title = "Sobre";
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SobrePage');
   }
-
 }

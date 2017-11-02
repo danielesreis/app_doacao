@@ -13,7 +13,7 @@ import { Globals } from '../../app/globals';
 })
 export class ConhecerPage implements OnInit{
   constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, public popoverCtrl: PopoverController, globals:Globals, instituicaoService:InstituicaoService) {
-    Globals.title = "ONG's";
+    Globals.title = "Instituições";
   }
   ngOnInit(){
 
@@ -30,6 +30,7 @@ export class ConhecerPage implements OnInit{
   ionViewDidEnter(){
   	this.menu.swipeEnable(false, 'menu_lateral');
   }
+
 
   // get instituicoes(){
   //   return this.instituicaoService.getInstituicoes();

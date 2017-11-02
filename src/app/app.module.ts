@@ -23,6 +23,7 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
 import { DonateinfoPage } from '../pages/donateinfo/donateinfo';
 import { VolunteerinfoPage } from '../pages/volunteerinfo/volunteerinfo';
 import { InstituicaoService } from './service/instituicao.service';
+import { AuthService } from './service/auth.service';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { InstituicaoService } from './service/instituicao.service';
    ],
   providers: [
     InstituicaoService,
+    AuthService,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
