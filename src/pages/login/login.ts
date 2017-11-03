@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController, ViewController, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { CadastroPage } from '../cadastro/cadastro';
+import { HomePage } from '../home/home';
+import { MyApp } from '../../app/app.component';
 import { AuthService } from '../../app/service/auth.service';
 
 @IonicPage()
@@ -17,17 +19,21 @@ export class LoginPage {
 
   	public login(){
   		this.showLoading()
-  		this.auth.login(this.registerCredentials).subscribe(allowed => {
-  			if(allowed){
-  				this.navCtrl.setRoot('HomePage');
-  			}
-  			else{
-  				this.showError("Access Denied");
-  			}
-  		},
-  		error => {
-  			this.showError(error);
-  		});
+  		this.auth.login(this.registerCredentials).then(allow => {
+        allow
+        .subscribe((allowed) => {
+          if(allowed){
+            this.navCtrl.push(MyApp);
+          }
+          else{
+            this.showError("Access Denied");
+          }
+        },
+        error => {
+          this.showError(error);
+        }
+        )
+      });
   	}
 
   openPopoverCadastro(event) {

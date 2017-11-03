@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
+ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import {HttpClient, HttpClientModule} from '@angular/common/http'
+import 'rxjs/add/operator/toPromise'
 import 'rxjs/add/operator/map';
 
 export class User{
@@ -16,17 +18,29 @@ export class User{
 @Injectable()
 export class AuthService {
 	currentUser: User;
-	public login(credentials){
+	url = "http://localhost/doar/"
+	public login(credentials):Promise<any>{
 		if(credentials.email === null || credentials.password === null){
-			return Observable.throw("Insert credentials");
+			return Promise.resolve(Observable.throw("Insert credentials"));
 		}
 		else{
-			return Observable.create(observer =>{
-				let access = (credentials.password === "pass" && credentials.email === "email");
-				this.currentUser = new User('Ellen', 'ellenfiscina@hotmail.com');
-				observer.next(access);
-				observer.complete();
-			});
+			return this.http.post(this.url+"login.php", {email: credentials.email, senha: credentials.password}).toPromise().then(
+				result => { 
+						return Observable.create(observer =>{
+							let access = result;
+							this.currentUser = result as User;
+							observer.next(access);
+							observer.complete();
+						});	
+						}
+				)
+			
+			// return Observable.create(observer =>{
+			// 		let access = {name: "tika", email: "ikao"};
+			// 		this.currentUser = access as User;
+			// 		observer.next(access);
+			// 		observer.complete();
+			// 	});	
 		}
 	}
 
@@ -54,6 +68,6 @@ export class AuthService {
 			observer.complete();
 		});
 	}
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
 }
