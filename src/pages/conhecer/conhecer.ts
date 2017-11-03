@@ -12,7 +12,7 @@ import { Globals } from '../../app/globals';
   providers: [InstituicaoService, Globals]
 })
 export class ConhecerPage implements OnInit{
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, public popoverCtrl: PopoverController, globals:Globals, instituicaoService:InstituicaoService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, public popoverCtrl: PopoverController, globals:Globals, private instituicaoService:InstituicaoService) {
     Globals.title = "Instituições";
   }
   ngOnInit(){
@@ -23,8 +23,8 @@ export class ConhecerPage implements OnInit{
   	popover.present ({ev: event});
   }
 
-  showInst() {
-	this.navCtrl.push(InstPage);
+  showInst(id) {
+	  this.navCtrl.push(InstPage, {instituicao: this.instituicaoService.getInstituicao(id)});
   }
 
   ionViewDidEnter(){
@@ -32,7 +32,7 @@ export class ConhecerPage implements OnInit{
   }
 
 
-  // get instituicoes(){
-  //   return this.instituicaoService.getInstituicoes();
-  // }
+  get instituicoes(){
+    return this.instituicaoService.getInstituicoes();
+  }
 }
