@@ -15,13 +15,13 @@
 
 <ion-content padding>
 
-	<div id="user_pic"><img src="https://goo.gl/gTU9NT"></div>
+	<div id="user_pic"><img src="{{user.foto}}"></div>
 	<br>
 
 	<div class="row">
 		<div class="col"><strong>Nome:</strong></div>
 		<div class="col">
-			Daniele Silva Reis
+			{{user.nome}}
 		</div>
 	</div>
 
@@ -29,12 +29,12 @@
 		<div class="col">
 		<strong>Telefone:</strong></div>
 		<div class="col">
-			(74)98821-1256
+			{{user.telefone}}
 		</div>
 	</div>
 
-	<ion-fab middle right >
-   		<button ion-fab color="secondary"><ion-icon name="create"></ion-icon></button>
+	<ion-fab bottom right>
+   		<button class="editButton" ion-fab color="secondary"><ion-icon name="create"></ion-icon></button>
  	</ion-fab>
 
 </ion-content>

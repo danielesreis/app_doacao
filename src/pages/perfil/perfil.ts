@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Globals } from '../../app/globals';
 
 /**
  * Generated class for the PerfilPage page.
@@ -12,9 +13,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @Component({
   selector: 'page-perfil',
   templateUrl: 'perfil.html',
+  providers: [Globals]
 })
 export class PerfilPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+  get user(){
+  	return Globals.user;
   }
 }

@@ -6,12 +6,16 @@ ion-icon[name="create"] {
 }
 
 #user_pic {
-	height: 150px;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin: auto;
 }
 
 #user_pic img {
-	border-radius: 50%;
-	height: 150px;
+
+	width: 150px;
 }
 
 .row {
@@ -19,4 +23,8 @@ ion-icon[name="create"] {
 }
 .col{
 	text-align: start;
+}
+
+.editButton{
+	margin-top: -120px;
 }
