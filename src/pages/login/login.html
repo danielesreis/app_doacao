@@ -6,7 +6,6 @@
 -->
 <ion-content padding>
 
-	<h4>Login</h4>
 	<div class="login-box">
 		<form (ngSubmit)="login()" #registerForm="ngForm">
 		<ion-list>
@@ -22,11 +21,12 @@
 				<br>
 				<button ion-button full class="btn" type="submit" [disabled]="!registerForm.form.valid">Entrar</button>
 				<button ion-button full class="btn btnFB">Entrar com o facebook</button>
+				<br>
 		</ion-list>
 		</form>
 	</div>
 </ion-content>
 <ion-footer no-shadow>
-	<span>Não tem uma conta?</span>
-	<button ion-button class="btn" (click)="openPopoverCadastro($event)">Cadastro</button>
+	<span id="lg">Não tem uma conta?</span>
+	<button ion-button class="btn" (click)="showCadastro()">Cadastro</button>
 </ion-footer>

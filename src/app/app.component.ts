@@ -53,7 +53,7 @@ export class MyApp {
   showLogin(){
     this.nav.push(LoginPage);
   }
-  
+
   showPerfil(){
     this.nav.push(PerfilPage);
   }

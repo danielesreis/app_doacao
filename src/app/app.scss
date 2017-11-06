@@ -23,19 +23,22 @@
 page-home {
 	
 }
-ion-header{
-	text-align: center;
+ion-title{
+	text-align: left !important;
 }
 
 .toolbar-background {
-  background-color: #FF9800;
+  background-color: map-get($colors, primary);
 }
 
 .white{
     color: #FFF;
     font-size: 20px;
 }
-
+ion-title {
+    text-align: left;
+    color: #FFF;
+}
 ion-content {
 	text-align: center;
 }
@@ -55,9 +58,9 @@ ion-content p {
 	font-size: 14px;
 	border-radius: 2px;
 	height: 36px;
-	background-color: #FF9800;
+	background-color: map-get($colors, primary);
 }
 
 .btn:focus{
-	background-color: #FB8C00;	
+	background-color: map-get($colors, dark);
 }
