@@ -20,10 +20,8 @@ export class AuthService {
 		else{
 			return this.http.post(Globals.apiUrl+"login.php", JSON.stringify({email: credentials.email, senha: credentials.password})).toPromise().then(
 				result => { 
-						console.log(result);
 						return Observable.create(observer =>{
 							let access = result[0];
-							console.log(access);
 							Globals.user = result[0] as User;
 							observer.next(access);
 							observer.complete();

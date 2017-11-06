@@ -19,6 +19,7 @@ export class PerfilPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, globals: Globals) {
   	Globals.title = "Perfil"
+
   }
   get user(){
   	return Globals.user;
