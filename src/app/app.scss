@@ -31,11 +31,12 @@ ion-header{
 }
 
 .toolbar-background {
-  background-color: orange;
+  background-color: #FF9800;
 }
 
 .white{
     color: #FFF;
+    font-size: 20px;
 }
 
 ion-content {
@@ -49,5 +50,17 @@ ion-content img {
 
 ion-content p {
 	text-align: center;
+	font-size: 14px;
 	color: #000;
+}
+
+.btn{
+	font-size: 14px;
+	border-radius: 2px;
+	height: 36px;
+	background-color: #FF9800;
+}
+
+.btn:focus{
+	background-color: #FB8C00;	
 }
