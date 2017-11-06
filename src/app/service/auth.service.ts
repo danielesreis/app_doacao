@@ -1,6 +1,7 @@
  import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {HttpClient, HttpClientModule} from '@angular/common/http'
+import { Globals } from '../globals';
 import 'rxjs/add/operator/toPromise'
 import 'rxjs/add/operator/map';
 
@@ -18,13 +19,12 @@ export class User{
 @Injectable()
 export class AuthService {
 	currentUser: User;
-	url = "http://localhost/doar/"
 	public login(credentials):Promise<any>{
 		if(credentials.email === null || credentials.password === null){
 			return Promise.resolve(Observable.throw("Insert credentials"));
 		}
 		else{
-			return this.http.post(this.url+"login.php", {email: credentials.email, senha: credentials.password}).toPromise().then(
+			return this.http.post(Globals.apiUrl+"login.php", {email: credentials.email, senha: credentials.password}).toPromise().then(
 				result => { 
 						return Observable.create(observer =>{
 							let access = result;

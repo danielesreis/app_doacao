@@ -18,14 +18,17 @@
 </ion-header> -->
 
 
-<ion-content padding>
-
-<ul>
-	<li *ngFor="let instituicao of instituicoes">
-		<div class="instituicao" id="inst1">
+<ion-content padding class='card-background-page'>
+<div *ngFor="let instituicao of instituicoes">
+    <ion-card  (click)="showInst(instituicao.id)">
+    <img src="{{instituicao.img}}"/>
+    <div class="card-shadow"></div>
+      <div class="card-title">{{instituicao.nome}}</div>
+      <div class="card-subtitle">{{instituicao.categoria}}</div>
+  </ion-card>
+		<!-- <div class="instituicao" id="inst1">
 			<img (click)="showInst(instituicao.id)" src="{{instituicao.img}}">
 			<div class="categoria">Creche</div><div class ="cidade">Juazeiro</div>
-		</div>
-	</li>
-</ul>
+		</div> -->
+</div>
 </ion-content>

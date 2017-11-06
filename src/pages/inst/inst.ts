@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { InstituicaoService } from '../../app/service/instituicao.service';
-import { Instituicao } from '../../app/instituicao';
+import { Instituicao } from '../../app/Instituicao';
 
 /**
  * Generated class for the InstPage page.
