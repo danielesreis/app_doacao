@@ -24,7 +24,7 @@
 					<ion-input placeholder="ConfirmarSenha"></ion-input>
 				</ion-item>
 					<br>
-					<button ion-button class="btn btnOK" type="submit" [disabled]="!registerForm.form.valid">Cadastrar</button>
+					<button ion-button class="btn btnOK" type="submit" [disabled]="!registerForm.form.valid" (click)="novoCadastro()">Cadastrar</button>
 					<button ion-button class="btn btnCancel" (click)="Cancelar()">Cancelar</button>
 			</ion-list>
 		</form>
