@@ -24,7 +24,6 @@ import { HomePage } from '../pages/home/home';
 export class MyApp {
   @ViewChild('mycontent') nav: NavController;
   rootPage:any = HomePage;
-  user = '';
   email = '';
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public popoverCtrl: PopoverController, private auth: AuthService) {
     platform.ready().then(() => {
@@ -71,6 +70,9 @@ export class MyApp {
   }
   get title(){
     return Globals.title;
+  }
+  get user(){
+    return Globals.user;
   }
 
 }

@@ -15,8 +15,8 @@
 		<ion-list>
 			<div>
 				<div *ngIf="user; else elseBlock">
-					<div>
-						<img id="profile_pic" src="../assets/imgs/profile-pictures.png">
+					<div id="profile_picDiv">
+						<img id="profile_pic" src="{{user.foto}}">
 					</div>
 					<button ion-item menuClose (click)="showPerfil()">Meu Perfil</button>
 					<button ion-item menuClose (click)="showPontos()">Meus Pontos</button>

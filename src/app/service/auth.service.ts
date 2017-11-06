@@ -2,23 +2,15 @@
 import { Observable } from 'rxjs/Observable';
 import {HttpClient, HttpClientModule, HttpHeaders} from '@angular/common/http'
 import { Globals } from '../globals';
+import { User } from '../user';
 import 'rxjs/add/operator/toPromise'
 import 'rxjs/add/operator/map';
 
-export class User{
-	name: string;
-	email: string;
 
-	constructor(name: string, email: string){
-		this.name = name;
-		this.email = email;
-	}
-}
 
 
 @Injectable()
 export class AuthService {
-	currentUser: User;
 	public login(credentials):Promise<any>{
 		if(credentials.email === null || credentials.password === null){
 			return Promise.resolve(Observable.throw("Insert credentials"));
@@ -29,8 +21,9 @@ export class AuthService {
 				result => { 
 						console.log(result);
 						return Observable.create(observer =>{
-							let access = result;
-							this.currentUser = result as User;
+							let access = result[0];
+							console.log(access);
+							Globals.user = result[0] as User;
 							observer.next(access);
 							observer.complete();
 						});	
@@ -60,13 +53,13 @@ export class AuthService {
 	}
 
 	public getUserInfo(): User{		
-		this.currentUser = new User('', '');
-		return this.currentUser;
+		Globals.user = new User();
+		return Globals.user;
 	}
 
 	public logout(){
 		return Observable.create(observer => {
-			this.currentUser = null;
+			Globals.user= null;
 			observer.next(true);
 			observer.complete();
 		});
