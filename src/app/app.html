@@ -23,7 +23,7 @@
 					<button ion-item menuClose (click)="showHistorico()">Histórico de doações</button>
 					<button ion-item menuClose>Sair</button>
 				</div>
-				<ng-template  #elseBlock><h3 (click)="openPopover($event)">Login</h3></ng-template>
+				<ng-template  #elseBlock><h3 menuClose (click)="showLogin()">Login</h3></ng-template>
 			</div>
 			<button ion-item menuClose (click)="showSobre()">Sobre</button>
 			<button ion-item menuClose>Avalie este aplicativo :-)</button>

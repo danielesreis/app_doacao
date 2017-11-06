@@ -16,11 +16,17 @@
 			<ion-item>
 				<ion-input type="password" placeholder="Senha" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
 			</ion-item>
-				<button ion-button outline color="light">Esqueci minha senha</button>
-				<button ion-button outline type="submit" [disabled]="!registerForm.form.valid">Entrar</button>
-				<button ion-button outline>Entrar com o facebook</button>
-				<button ion-button outline (click)="openPopoverCadastro($event)">Novo Cadastro</button>
+				<br>
+				<a href="#">Esqueci minha senha</a>
+				<br>
+				<br>
+				<button ion-button full class="btn" type="submit" [disabled]="!registerForm.form.valid">Entrar</button>
+				<button ion-button full class="btn btnFB">Entrar com o facebook</button>
 		</ion-list>
 		</form>
 	</div>
 </ion-content>
+<ion-footer no-shadow>
+	<span>Não tem uma conta?</span>
+	<button ion-button class="btn" (click)="openPopoverCadastro($event)">Cadastro</button>
+</ion-footer>

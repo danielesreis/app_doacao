@@ -50,6 +50,10 @@ export class MyApp {
     popover.present ({ev: event});
   }
 
+  showLogin(){
+    this.nav.push(LoginPage);
+  }
+  
   showPerfil(){
     this.nav.push(PerfilPage);
   }
