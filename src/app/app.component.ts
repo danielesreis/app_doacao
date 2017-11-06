@@ -19,7 +19,7 @@ import { AuthService } from './service/auth.service';
 import { HomePage } from '../pages/home/home';
 @Component({
   templateUrl: 'app.html',
-  providers: [Globals]
+  providers: [Globals],
 })
 export class MyApp {
   @ViewChild('mycontent') nav: NavController;
