@@ -3,16 +3,18 @@ import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angul
 import { MaterialPage } from '../material/material';
 import { DinheiroPage } from '../dinheiro/dinheiro';
 import { VoluntariadoPage } from '../voluntariado/voluntariado';
-
+import { Globals } from '../../app/globals';
 
 @IonicPage()
 @Component({
   selector: 'page-doar',
   templateUrl: 'doar.html',
+  providers: [Globals]
 })
 export class DoarPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, globals:Globals) {
+    Globals.title = "Doar";
   }
 
   showDoarMaterial() {

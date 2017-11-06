@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 
-<ion-header>
+<!-- <ion-header>
 <ion-navbar hideBackButton>
   <button ion-button menuToggle icon-only item-left><ion-icon name="menu"></ion-icon></button>
   	<ion-buttons end>
@@ -15,26 +15,17 @@
   	</ion-buttons>
     <ion-title>ONG's</ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
 
 <ion-content padding>
 
-	<div class="instituicao" id="inst1">
-		<img (click)="showInst()" src="https://goo.gl/KVzUfX">
-		<div class="categoria">Creche</div><div class ="cidade">Juazeiro</div>
-	</div>
-	<div class="instituicao" id="inst2">
-		<img (click)="showInst()" src="https://goo.gl/KVzUfX">
-		<div class="categoria">Creche</div><div class ="cidade">Juazeiro</div>
-	</div>
-	<div class="instituicao" id="inst3">
-		<img (click)="showInst()" src="https://goo.gl/KVzUfX">
-		<div class="categoria">Creche</div><div class ="cidade">Juazeiro</div>
-	</div>
-	<div class="instituicao" id="inst4">
-		<img (click)="showInst()" src="https://goo.gl/KVzUfX">
-		<div class="categoria">Creche</div><div class ="cidade">Juazeiro</div>
-	</div>
-
+<ul>
+	<li *ngFor="let instituicao of instituicoes">
+		<div class="instituicao" id="inst1">
+			<img (click)="showInst(instituicao.id)" src="{{instituicao.img}}">
+			<div class="categoria">Creche</div><div class ="cidade">Juazeiro</div>
+		</div>
+	</li>
+</ul>
 </ion-content>

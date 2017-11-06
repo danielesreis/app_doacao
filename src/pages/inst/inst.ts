@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { InstituicaoService } from '../../app/service/instituicao.service';
+import { Instituicao } from '../../app/Instituicao';
 
 /**
  * Generated class for the InstPage page.
@@ -14,12 +16,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'inst.html',
 })
 export class InstPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+	instituicao:Instituicao;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private instituicaoService:InstituicaoService) {
+  	this.instituicao = navParams.get("instituicao");
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad InstPage');
-  }
 
 }

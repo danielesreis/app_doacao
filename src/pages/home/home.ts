@@ -14,7 +14,7 @@ export class HomePage {
     }
 
   ionViewDidEnter(){
-	this.menu.swipeEnable(false, 'menu_lateral');
+	this.menu.swipeEnable(true, 'menu_lateral');
   }
 
   showConhecer() {

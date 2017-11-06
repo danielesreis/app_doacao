@@ -12,21 +12,36 @@ import { LoginPage } from '../pages/login/login';
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { DonateinfoPage } from '../pages/donateinfo/donateinfo';
 import { VolunteerinfoPage } from '../pages/volunteerinfo/volunteerinfo';
+import { Globals } from './globals';
+import { InstituicaoService } from './service/instituicao.service';
+import { AuthService } from './service/auth.service';
 
 import { HomePage } from '../pages/home/home';
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [Globals]
 })
 export class MyApp {
   @ViewChild('mycontent') nav: NavController;
   rootPage:any = HomePage;
-
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public popoverCtrl: PopoverController) {
+  user = '';
+  email = '';
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public popoverCtrl: PopoverController, private auth: AuthService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+    });
+    Globals.title = "Bem vindo ao DOAR!";
+    /*let info = this.auth.getUserInfo();
+    this.user = info['name'];
+    this.email = info['email'];*/
+  }
+
+  public logout(){
+    this.auth.logout().subscribe(succ => {
+      this.nav.setRoot('HomePage')
     });
   }
 
@@ -50,5 +65,9 @@ export class MyApp {
   showSobre(){
     this.nav.push(SobrePage);
   }
+  get title(){
+    return Globals.title;
+  }
+
 }
 
