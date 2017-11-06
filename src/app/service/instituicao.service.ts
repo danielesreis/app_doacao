@@ -11,17 +11,18 @@ export class InstituicaoService {
   constructor(private http: HttpClient) {
       console.log(this.instituicoesLocal);
        this.instituicoes = this.instituicoesLocal?JSON.parse(localStorage["instituicoes"]):[];
-       this.http.get(Globals.apiUrl+"getInst.php").subscribe(data => {
-          this.instituicoes = (data)?data as Instituicao[]:this.instituicoes;
-          console.log(data as Instituicao[]);
-          this.instituicoesLocal = JSON.stringify(this.instituicoes);
-        })
+       
 
    }
 
 
-  getInstituicoes():Instituicao[]{
-  	return this.instituicoes;
+  getInstituicoes():Promise<Instituicao[]>{
+    return this.http.get(Globals.apiUrl+"getInst.php").toPromise().then(data => {
+          this.instituicoes = (data)?data as Instituicao[]:this.instituicoes;
+          console.log(data as Instituicao[]);
+          this.instituicoesLocal = JSON.stringify(this.instituicoes);
+          return this.instituicoes;
+        });
   }
   getInstituicao(id):Instituicao{
     for(var instituicao of this.instituicoes){

@@ -4,6 +4,7 @@ import { IonicPage, PopoverController, NavController, NavParams, MenuController 
 import { InstPage } from '../inst/inst';
 import { SearchPage } from '../search/search';
 import { Globals } from '../../app/globals';
+import { Instituicao } from '../../app/Instituicao';
 
 @IonicPage()
 @Component({
@@ -12,11 +13,17 @@ import { Globals } from '../../app/globals';
   providers: [InstituicaoService, Globals]
 })
 export class ConhecerPage implements OnInit{
+  loading:boolean;
+  instituicoes: Instituicao[];
   constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, public popoverCtrl: PopoverController, globals:Globals, private instituicaoService:InstituicaoService) {
     Globals.title = "Instituições";
   }
   ngOnInit(){
-
+    this.loading = true;
+    this.instituicaoService.getInstituicoes().then(results => {
+      this.instituicoes = results;
+      this.loading = false;
+    });
   }
   openPopover(event) {
   	let popover = this.popoverCtrl.create(SearchPage);
@@ -32,7 +39,8 @@ export class ConhecerPage implements OnInit{
   }
 
 
-  get instituicoes(){
-    return this.instituicaoService.getInstituicoes();
-  }
+  // get instituicoes(){
+  //   this.loading = false;
+  //   return this.instituicaoService.getInstituicoes();
+  // }
 }
