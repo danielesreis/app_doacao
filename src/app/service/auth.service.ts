@@ -1,6 +1,6 @@
  import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import {HttpClient, HttpClientModule} from '@angular/common/http'
+import {HttpClient, HttpClientModule, HttpHeaders} from '@angular/common/http'
 import { Globals } from '../globals';
 import 'rxjs/add/operator/toPromise'
 import 'rxjs/add/operator/map';
@@ -24,15 +24,18 @@ export class AuthService {
 			return Promise.resolve(Observable.throw("Insert credentials"));
 		}
 		else{
-			return this.http.post(Globals.apiUrl+"login.php", {email: credentials.email, senha: credentials.password}).toPromise().then(
+			var headersOpt = new HttpHeaders({"Content-type": "application/x-www-form-urlencoded"});
+			return this.http.post(Globals.apiUrl+"login.php", "email="+credentials.email+"&senha="+credentials.password, {headers: headersOpt}).toPromise().then(
 				result => { 
+						console.log(result);
 						return Observable.create(observer =>{
 							let access = result;
 							this.currentUser = result as User;
 							observer.next(access);
 							observer.complete();
 						});	
-						}
+						},
+				error => { console.log(error); }
 				)
 			
 			// return Observable.create(observer =>{
