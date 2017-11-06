@@ -6,15 +6,17 @@ ion-icon[name="create"] {
 }
 
 #user_pic {
-	float: left;
-	width: 50%;
-	height: auto;
+	height: 150px;
 }
 
 #user_pic img {
 	border-radius: 50%;
+	height: 150px;
 }
 
 .row {
 	clear: both;
+}
+.col{
+	text-align: start;
 }
