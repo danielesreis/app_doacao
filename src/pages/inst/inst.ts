@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { InstituicaoService } from '../../app/service/instituicao.service';
 import { Instituicao } from '../../app/Instituicao';
 
@@ -17,9 +17,11 @@ import { Instituicao } from '../../app/Instituicao';
 })
 export class InstPage {
 	instituicao:Instituicao;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private instituicaoService:InstituicaoService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private instituicaoService:InstituicaoService, public menu: MenuController) {
   	this.instituicao = navParams.get("instituicao");
   }
 
-
+ionViewDidEnter(){
+  	this.menu.swipeEnable(true, 'menu_lateral');
+  }
 }

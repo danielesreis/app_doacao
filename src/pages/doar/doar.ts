@@ -30,7 +30,7 @@ export class DoarPage {
   }
 
   ionViewDidEnter(){
-    this.menu.swipeEnable(false, 'menu_lateral');
+    this.menu.swipeEnable(true, 'menu_lateral');
   }
 
 }

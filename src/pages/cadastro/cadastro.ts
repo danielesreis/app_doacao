@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, PopoverController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, PopoverController, AlertController, MenuController } from 'ionic-angular';
 import { AuthService } from '../../app/service/auth.service';
 import { Globals } from '../../app/globals';
 
@@ -14,7 +14,7 @@ export class CadastroPage {
 	createSuccess = false;
 	registerCredentials = {email: '', password: ''};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public popoverCtrl: PopoverController, private auth: AuthService, private alertCtrl: AlertController, globals:Globals) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public popoverCtrl: PopoverController, private auth: AuthService, private alertCtrl: AlertController, globals:Globals, public menu: MenuController) {
     Globals.title = "Cadastro";
   }
 
@@ -57,4 +57,7 @@ export class CadastroPage {
   	this.view.dismiss();
   }
 
+  ionViewDidEnter(){
+    this.menu.swipeEnable(true, 'menu_lateral');
+  }
 }

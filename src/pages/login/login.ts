@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, PopoverController, ViewController, AlertController, LoadingController, Loading } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController, ViewController, AlertController, LoadingController, Loading, MenuController } from 'ionic-angular';
 import { CadastroPage } from '../cadastro/cadastro';
 import { HomePage } from '../home/home';
 import { MyApp } from '../../app/app.component';
@@ -16,7 +16,7 @@ export class LoginPage {
 	loading: Loading;
 	registerCredentials = {email: '', password: ''};
   
-  	constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, public view: ViewController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController, globals:Globals) {
+  	constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, public view: ViewController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController, globals:Globals, public menu: MenuController) {
       Globals.title = "Login";
     }
 
@@ -66,5 +66,9 @@ export class LoginPage {
   		buttons: ['OK']
   	});
   	alert.present();
+  }
+
+  ionViewDidEnter(){
+    this.menu.swipeEnable(true, 'menu_lateral');
   }
 }
