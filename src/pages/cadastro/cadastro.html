@@ -5,8 +5,6 @@
   Ionic pages and navigation.
 -->
 <ion-content padding>
-
-	<h4>Novo Cadastro</h4>
 	<div class="login-box">
 		<form (ngSubmit)="register()" #registerForm="ngForm">
 			<ion-list>
@@ -25,10 +23,9 @@
 				<ion-item>
 					<ion-input placeholder="ConfirmarSenha"></ion-input>
 				</ion-item>
-				
-					<button ion-button outline type="submit" [disabled]="!registerForm.form.valid">Cadastrar</button>
-					<button ion-button outline (click)="Cancelar()">Cancelar</button>
-					<button ion-button outline (click)="novoCadastro()">Ok</button>
+					<br>
+					<button ion-button class="btn btnOK" type="submit" [disabled]="!registerForm.form.valid">Cadastrar</button>
+					<button ion-button class="btn btnCancel" (click)="Cancelar()">Cancelar</button>
 			</ion-list>
 		</form>
 	</div>

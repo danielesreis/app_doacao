@@ -13,7 +13,6 @@ import { Globals } from '../../app/globals';
   providers: [Globals]
 })
 export class LoginPage {
-  @ViewChild('mycontent') nav: NavController;
 	loading: Loading;
 	registerCredentials = {email: '', password: ''};
   
@@ -47,7 +46,7 @@ export class LoginPage {
   }
 
   showCadastro(){
-    this.nav.push(CadastroPage);
+    this.navCtrl.push(CadastroPage);
   }
 
   showLoading(){

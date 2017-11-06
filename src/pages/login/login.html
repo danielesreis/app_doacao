@@ -18,8 +18,8 @@
 				<br>
 				<a href="#">Esqueci minha senha</a>
 				<br>
-				<br>
 				<button ion-button full class="btn" type="submit" [disabled]="!registerForm.form.valid">Entrar</button>
+				<span>ou</span>
 				<button ion-button full class="btn btnFB">Entrar com o facebook</button>
 				<br>
 		</ion-list>
@@ -28,5 +28,5 @@
 </ion-content>
 <ion-footer no-shadow>
 	<span id="lg">Não tem uma conta?</span>
-	<button ion-button class="btn" (click)="showCadastro()">Cadastro</button>
+	<button ion-button class="btn btnCad" (click)="showCadastro()">Cadastro</button>
 </ion-footer>
