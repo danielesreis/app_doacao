@@ -33,6 +33,8 @@ export class MyApp {
       splashScreen.hide();
     });
     Globals.title = "Bem vindo ao DOAR!";
+
+    Globals.user = localStorage.getItem("user")?JSON.parse(localStorage.getItem("user")):false;
     /*let info = this.auth.getUserInfo();
     this.user = info['name'];
     this.email = info['email'];*/
@@ -40,7 +42,7 @@ export class MyApp {
 
   public logout(){
     this.auth.logout().subscribe(succ => {
-      this.nav.setRoot('HomePage')
+      this.nav.setRoot(HomePage);
     });
   }
 
@@ -68,6 +70,8 @@ export class MyApp {
   showSobre(){
     this.nav.push(SobrePage);
   }
+
+
   get title(){
     return Globals.title;
   }
