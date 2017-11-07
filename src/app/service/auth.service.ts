@@ -5,6 +5,8 @@ import { Globals } from '../globals';
 import { User } from '../user';
 import 'rxjs/add/operator/toPromise'
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
+
 
 
 
@@ -16,19 +18,15 @@ export class AuthService {
 			return Promise.resolve(Observable.throw("Insert credentials"));
 		}
 		else{
-			var headersOpt = new HttpHeaders({"Content-type": "application/x-www-form-urlencoded"});
-			return this.http.post(Globals.apiUrl+"login.php", "email="+credentials.email+"&senha="+credentials.password, {headers: headersOpt}).toPromise().then(
+			return this.http.post(Globals.apiUrl+"login.php", JSON.stringify({email: credentials.email, senha: credentials.password})).toPromise().then(
 				result => { 
-						console.log(result);
 						return Observable.create(observer =>{
 							let access = result[0];
-							console.log(access);
 							Globals.user = result[0] as User;
 							observer.next(access);
 							observer.complete();
 						});	
-						},
-				error => { console.log(error); }
+						}
 				)
 			
 			// return Observable.create(observer =>{
@@ -40,15 +38,22 @@ export class AuthService {
 		}
 	}
 
-	public register(credentials){
+	public register(credentials):Promise<any>{
 		if(credentials.email === null || credentials.password === null){
-			return Observable.throw("Insert credentials");
+			return Promise.resolve(Observable.throw("Insert credentials"));
 		}
 		else{
-			return Observable.create(observer => {
-				observer.next(true);
-				observer.complete();
-			});
+			if(credentials.password != credentials.passwordConf) 
+				return Promise.resolve(Observable.throw("Senha e confirmação não são iguais!"));
+			let params = {email: credentials.email, senha: credentials.password, telefone: credentials.telefone, nome: credentials.nome};
+			return this.http.post(Globals.apiUrl+"signup.php", JSON.stringify(params)).toPromise().then(
+				result => { 
+						return Observable.create(observer =>{
+							observer.next(true);
+							observer.complete();
+						});	
+						}
+				);
 		}
 	}
 
