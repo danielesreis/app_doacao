@@ -2,9 +2,11 @@ export class Instituicao{
 	id;
 	nome;
 	telefone;
-	localizacao;
+	lat;
+	lng;
 	descricao;
 	facebook;
 	instagram;
 	youtube;
+	endereco;
 }

@@ -23,6 +23,7 @@ export class AuthService {
 						return Observable.create(observer =>{
 							let access = result[0];
 							Globals.user = result[0] as User;
+							localStorage.setItem("user", JSON.stringify(Globals.user));
 							observer.next(access);
 							observer.complete();
 						});	
@@ -45,6 +46,9 @@ export class AuthService {
 		else{
 			if(credentials.password != credentials.passwordConf) 
 				return Promise.resolve(Observable.throw("Senha e confirmação não são iguais!"));
+			let regex = new RegExp('/^[a-z0-9](\.?[a-z0-9_-]){0,}@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$/g');
+			if(!regex.test(credentials.email))
+				return Promise.resolve(Observable.throw("E-mail inválido!"));
 			let params = {email: credentials.email, senha: credentials.password, telefone: credentials.telefone, nome: credentials.nome};
 			return this.http.post(Globals.apiUrl+"signup.php", JSON.stringify(params)).toPromise().then(
 				result => { 
@@ -65,6 +69,7 @@ export class AuthService {
 	public logout(){
 		return Observable.create(observer => {
 			Globals.user= null;
+			localStorage.setItem("user", null);
 			observer.next(true);
 			observer.complete();
 		});

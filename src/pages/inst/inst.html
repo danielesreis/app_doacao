@@ -4,7 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!-- <ion-header>
 
   <ion-navbar hideBackButton>
   <button ion-button menuToggle icon-only item-left><ion-icon name="menu"></ion-icon></button>
@@ -12,9 +12,22 @@
   </ion-navbar>
 
 </ion-header>
-
+ -->
 
 <ion-content padding>
-<h1>{{instituicao.nome}}</h1>
 <img src="{{instituicao.img}}">
+<h3>{{instituicao.nome}}</h3>
+<p>{{instituicao.descricao}}</p>
+<h2>Onde estamos?</h2>
+<div id="map_canvas"></div>
+<img class="social_icon" src="./assets/icon/facebook.png">
+<img class="social_icon" src="./assets/icon/instagram.png">
+<img class="social_icon" src="./assets/icon/youtube.png">
+<img class="social_icon" src="./assets/icon/whatsapp.png">
+
+<h3>O que a {{instituicao.nome}} mais precisa no momento?</h3>
+<br>
+<br>
+<br>
+
 </ion-content>

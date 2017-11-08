@@ -21,7 +21,7 @@
 					<button ion-item menuClose (click)="showPerfil()">Meu Perfil</button>
 					<button ion-item menuClose (click)="showPontos()">Meus Pontos</button>
 					<button ion-item menuClose (click)="showHistorico()">Histórico de doações</button>
-					<button ion-item menuClose>Sair</button>
+					<button ion-item menuClose (click)="logout()">Sair</button>
 				</div>
 				<ng-template  #elseBlock><h3 menuClose (click)="showLogin()">Login</h3></ng-template>
 			</div>
