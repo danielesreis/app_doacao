@@ -11,11 +11,7 @@ export class InstituicaoService {
   constructor(private http: HttpClient) {
       console.log(this.instituicoesLocal);
        this.instituicoes = this.instituicoesLocal?JSON.parse(localStorage["instituicoes"]):[];
-       
-
    }
-
-
   getInstituicoes():Promise<Instituicao[]>{
     return this.http.get(Globals.apiUrl+"getInst.php").toPromise().then(data => {
           this.instituicoes = (data)?data as Instituicao[]:this.instituicoes;

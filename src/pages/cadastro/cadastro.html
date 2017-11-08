@@ -6,11 +6,7 @@
 -->
 <ion-content padding>
 	<div class="login-box">
-<<<<<<< HEAD
-		<form  #registerForm="ngForm">
-=======
 		<form (ngSubmit)="novoCadastro()" #registerForm="ngForm">
->>>>>>> 19c2e2d80a4ebf376afc0e3fa5957987934a0510
 			<ion-list>
 				<ion-item>
 					<ion-input placeholder="Nome" name="nome" [(ngModel)]="registerCredentials.nome" required></ion-input>
@@ -22,7 +18,7 @@
 					<ion-input type="email" placeholder="Email" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
 				</ion-item>
 				<ion-item>
-					<ion-input type="password" placeholder="Password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+					<ion-input type="password" placeholder="Senha" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
 				</ion-item>
 				<ion-item>
 					<ion-input type="password" placeholder="ConfirmarSenha" name="passwordConf" [(ngModel)]="registerCredentials.passwordConf" required></ion-input>
