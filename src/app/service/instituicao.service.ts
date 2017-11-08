@@ -18,7 +18,7 @@ export class InstituicaoService {
   getInstituicoes():Promise<Instituicao[]>{
     return this.http.get(Globals.apiUrl+"getInst.php").toPromise().then(data => {
           this.instituicoes = (data)?data as Instituicao[]:this.instituicoes;
-          console.log(data as Instituicao[]);
+          //console.log(data as Instituicao[]);
           localStorage.setItem("instituicoes", JSON.stringify(this.instituicoes));
           return this.instituicoes;
         },
@@ -26,10 +26,10 @@ export class InstituicaoService {
           return this.instituicoes;
         });
   }
-  getInstituicao(id):Instituicao{
+  getInstituicao(id):Promise<Instituicao>{
     for(var instituicao of this.instituicoes){
-      if(instituicao.id == id) return instituicao;
+      if(instituicao.id == id) return Promise.resolve(instituicao);
     }
-    return null;
+    return Promise.reject("Deu erro");
   }
 }

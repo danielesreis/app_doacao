@@ -31,7 +31,7 @@ export class ConhecerPage implements OnInit{
   }
 
   showInst(id) {
-	  this.navCtrl.push(InstPage, {instituicao: this.instituicaoService.getInstituicao(id)});
+	  this.navCtrl.push(InstPage, {id: id});
   }
 
   ionViewDidEnter(){
