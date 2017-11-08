@@ -9,8 +9,6 @@ export class InstituicaoService {
 	instituicoes:Instituicao[];
  
   constructor(private http: HttpClient) {
-      console.log(this.instituicoesLocal);
-       this.instituicoes = this.instituicoesLocal?JSON.parse(localStorage["instituicoes"]):[];
        this.instituicoes = localStorage.getItem("instituicoes")?JSON.parse(localStorage.getItem("instituicoes")):[];
    }
   getInstituicoes():Promise<Instituicao[]>{
