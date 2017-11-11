@@ -15,20 +15,21 @@
 		<ion-list>
 			<div>
 				<div *ngIf="user; else elseBlock">
-					<div (click)="showPerfil()">
+					<div (click)="showPerfil()" menuClose>
 						<div id="profile_picDiv">
 							<img id="profile_pic" src="{{user.foto}}">
 						</div>
-						<button ion-item menuClose >Meu Perfil</button>
+						<button ion-item menuClose ><ion-icon name="person"></ion-icon>Meu Perfil</button>
 					</div>
-					<button ion-item menuClose (click)="showPontos()">Meus Pontos</button>
-					<button ion-item menuClose (click)="showHistorico()">Histórico de doações</button>
-					<button ion-item menuClose (click)="logout()">Sair</button>
+					<button ion-item menuClose (click)="showPontos()"><ion-icon name="medal"></ion-icon>Meus Pontos</button>
+					<button ion-item menuClose (click)="showHistorico()"><ion-icon name="list"></ion-icon>Histórico de doações</button>
+					<button ion-item menuClose (click)="logout()"><ion-icon name="log-out"></ion-icon>Sair</button>
 				</div>
-				<ng-template  #elseBlock><h3 menuClose (click)="showLogin()">Login</h3></ng-template>
+				<ng-template  #elseBlock><h3 class="loginButton" menuClose (click)="showLogin()"><ion-icon name="log-in"></ion-icon>Login</h3></ng-template>
 			</div>
-			<button ion-item menuClose (click)="showSobre()">Sobre</button>
-			<button ion-item menuClose>Avalie este aplicativo :-)</button>
+			<button ion-item menuClose (click)="showHome()"><ion-icon name="home"></ion-icon>Home</button>
+			<button ion-item menuClose (click)="showSobre()"><ion-icon name="help"></ion-icon>Sobre</button>
+			<button ion-item menuClose><ion-icon name="star-half"></ion-icon>Avalie este aplicativo :-)</button>
 		</ion-list>
 	</ion-content>
 </ion-menu>

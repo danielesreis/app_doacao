@@ -69,3 +69,6 @@ ion-content p {
 .btn:focus{
 	background-color: map-get($colors, dark);
 }
+.loginButton{
+	cursor: pointer;
+}
