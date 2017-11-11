@@ -7,7 +7,10 @@
 
 <ion-content padding>
 
-	<div id="user_pic"><img src="{{user.foto}}" (click)="getPictureChoose()"></div>
+	<div (click)="getPicture()" id="user_pic">
+		<img src="{{user.foto}}" >
+	</div>
+			<button class="avatarButton" (click)="getPicture()"><ion-icon name="camera"></ion-icon></button>
 	<br>
 
 	<div class="row">
@@ -26,7 +29,7 @@
 	</div>
 
 	<ion-fab bottom right>
-   		<button class="editButton" ion-fab color="secondary"><ion-icon name="create"></ion-icon></button>
+   		<button class="editButton" ion-fab color="secondary" (click)="openEdicao()"><ion-icon name="create"></ion-icon></button>
  	</ion-fab>
 
 </ion-content>

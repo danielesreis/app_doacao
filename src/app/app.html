@@ -15,10 +15,12 @@
 		<ion-list>
 			<div>
 				<div *ngIf="user; else elseBlock">
-					<div id="profile_picDiv">
-						<img id="profile_pic" src="{{user.foto}}">
+					<div (click)="showPerfil()">
+						<div id="profile_picDiv">
+							<img id="profile_pic" src="{{user.foto}}">
+						</div>
+						<button ion-item menuClose >Meu Perfil</button>
 					</div>
-					<button ion-item menuClose (click)="showPerfil()">Meu Perfil</button>
 					<button ion-item menuClose (click)="showPontos()">Meus Pontos</button>
 					<button ion-item menuClose (click)="showHistorico()">Histórico de doações</button>
 					<button ion-item menuClose (click)="logout()">Sair</button>

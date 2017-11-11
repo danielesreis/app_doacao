@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { Globals } from '../../app/globals';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+import { ImagemService } from '../../app/service/imagem.service';
+import { AuthService } from '../../app/service/auth.service';
+
 import { ActionSheetController } from 'ionic-angular';
+
+import { EdicaoPage } from '../edicao/edicao';
 
 /**
  * Generated class for the PerfilPage page.
@@ -20,7 +23,7 @@ import { ActionSheetController } from 'ionic-angular';
 })
 export class PerfilPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, globals: Globals, private camera: Camera, private fileTransfer: FileTransfer, private actionSheetCtrl: ActionSheetController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, globals: Globals, private imagemService: ImagemService, private actionSheetCtrl: ActionSheetController, private auth: AuthService) {
   	Globals.title = "Perfil"
 
   }
@@ -29,67 +32,34 @@ export class PerfilPage {
   }
 
   
-  getPictureChoose(){
-    let sourceType: number;
+  getPicture(){
          let actionSheet = this.actionSheetCtrl.create({
-           title: 'Modify your album',
            buttons: [
              {
-               text: 'Camera',
+               text: 'Câmera',
                handler: () => {
-                 sourceType = this.camera.PictureSourceType.CAMERA;
-                 this.getPicture(sourceType);
+                 this.imagemService.getPicture('camera', 'updateAvatar', Globals.user.id+'.jpg').then(result => {if(result) this.updateUser({foto: result.url});});
                }
              },{
-               text: 'Gallery',
+               text: 'Galeria',
                handler: () => {
-                 sourceType = this.camera.PictureSourceType.PHOTOLIBRARY;
-                 this.getPicture(sourceType);
+                 this.imagemService.getPicture('galeria', 'updateAvatar', Globals.user.id+'.jpg').then(result => {if(result) this.updateUser({foto: result.url});});
                }
-             },{
-               text: 'Cancel',
-               role: 'cancel'
              }
            ]
          });
          actionSheet.present();
   }
 
-    getPicture(sourceType){
-      const options: CameraOptions = {
-        quality: 100,
-        sourceType: sourceType,
-        destinationType: this.camera.DestinationType.FILE_URI,
-        encodingType: this.camera.EncodingType.JPEG,
-        mediaType: this.camera.MediaType.PICTURE
-      }
-      this.camera.getPicture(options).then((imageData) => {
-       // imageData is either a base64 encoded string or a file URI
-       // If it's base64:
-       this.upload(imageData);
-      
-      }, (err) => {
-       // Handle error
-      });
-    }
-   
+   updateUser(data){
+       data.id = Globals.user.id;
+       this.auth.updateUser(data).then();
+       // Globals.user.foto = Globals.apiUrl+'avatar/'+Globals.user.id+'.jpg';
+       // localStorage.setItem("user", JSON.stringify(Globals.user));
+   }
 
-   upload(file) {
-     const transfer: FileTransferObject = this.fileTransfer.create();
-     let options: FileUploadOptions = {
-        fileKey: 'file',
-        fileName: Globals.user.id+'.jpg',
-        mimeType: "multipart/form-data",
-        params : {'fileName': Globals.user.id+'.jpg', 'id': Globals.user.id}
-     }
-     transfer.upload(file, Globals.apiUrl+"updateAvatar.php", options)
-      .then((data) => {
-        alert(data.response);
-         Globals.user.foto = Globals.apiUrl+'avatar/'+Globals.user.id+'.jpg';
-         localStorage.setItem("user", JSON.stringify(Globals.user));
-      }, (err) => {
-        alert(err.body);
-      })
+   openEdicao(){
+     this.navCtrl.push(EdicaoPage);
    }
 
   ionViewDidEnter(){

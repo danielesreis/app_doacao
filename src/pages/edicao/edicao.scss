@@ -1,0 +1,9 @@
+page-cadastro {
+
+}
+.btnCancel{
+	background-color: map-get($colors, danger);
+}
+.btnOK{
+	background-color: map-get($colors, secondary);
+}

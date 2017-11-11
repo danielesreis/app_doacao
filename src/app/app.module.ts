@@ -25,16 +25,19 @@ import { InstPage } from '../pages/inst/inst';
 import { SearchPage } from '../pages/search/search';
 import { LoginPage } from '../pages/login/login';
 import { CadastroPage } from '../pages/cadastro/cadastro';
+import { EdicaoPage } from '../pages/edicao/edicao';
 import { DonateinfoPage } from '../pages/donateinfo/donateinfo';
 import { VolunteerinfoPage } from '../pages/volunteerinfo/volunteerinfo';
 import { InstituicaoService } from './service/instituicao.service';
 import { AuthService } from './service/auth.service';
+import { ImagemService } from './service/imagem.service';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ConhecerPage,
+    EdicaoPage,
     DoarPage,
     MaterialPage,
     DinheiroPage,
@@ -60,6 +63,7 @@ import { AuthService } from './service/auth.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    EdicaoPage,
     HomePage,
     ConhecerPage,
     DoarPage,
@@ -79,6 +83,7 @@ import { AuthService } from './service/auth.service';
    ],
   providers: [
     InstituicaoService,
+    ImagemService,
     GoogleMaps,
     Camera,
     FileTransfer,
