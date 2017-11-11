@@ -10,11 +10,7 @@ export class InstituicaoService {
  
   constructor(private http: HttpClient) {
        this.instituicoes = localStorage.getItem("instituicoes")?JSON.parse(localStorage.getItem("instituicoes")):[];
-       
-
    }
-
-
   getInstituicoes():Promise<Instituicao[]>{
     return this.http.get(Globals.apiUrl+"getInst.php").toPromise().then(data => {
           this.instituicoes = (data)?data as Instituicao[]:this.instituicoes;
