@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angul
 import { Instituicao } from '../../app/Instituicao';
 import { Globals } from '../../app/globals';
 import { InstituicaoService } from '../../app/service/instituicao.service';
+import { DoacaoService } from '../../app/service/doacao.service';
 /**
  * Generated class for the MaterialPage page.
  *
@@ -18,7 +19,7 @@ import { InstituicaoService } from '../../app/service/instituicao.service';
 })
 export class MaterialPage implements OnInit{
   instituicoes: Instituicao[];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, globals: Globals, private instituicaoService:InstituicaoService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, globals: Globals, private instituicaoService:InstituicaoService, private doacaoService: DoacaoService) {
     Globals.title = "Doação de material";
   }
 
@@ -34,5 +35,25 @@ export class MaterialPage implements OnInit{
 
   showDoar(){
   	this.navCtrl.pop();
+  }
+  doacao = {
+    doador: Globals.user.id,
+    instituicao: null,
+    estado: null,
+    endereco: null,
+    descricao: null,
+    hora_inicio: null,
+    hora_fim: null,
+    data: null,
+    tipo: this.doacaoService.tipo.MATERIAL
+  }
+  doar(){
+    console.log(this.doacao);
+    this.doacaoService.doar(this.doacao).then(result => {
+      console.log(result);
+    },
+    error => {
+      console.log(error);
+    });
   }
 }

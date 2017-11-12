@@ -71,6 +71,9 @@ export class MyApp {
     this.nav.push(SobrePage);
   }
 
+  showHome(){
+    this.nav.push(HomePage);
+  }
 
   get title(){
     return Globals.title;

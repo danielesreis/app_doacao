@@ -31,6 +31,7 @@ import { VolunteerinfoPage } from '../pages/volunteerinfo/volunteerinfo';
 import { InstituicaoService } from './service/instituicao.service';
 import { AuthService } from './service/auth.service';
 import { ImagemService } from './service/imagem.service';
+import { DoacaoService } from './service/doacao.service';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { ImagemService } from './service/imagem.service';
   providers: [
     InstituicaoService,
     ImagemService,
+    DoacaoService,
     GoogleMaps,
     Camera,
     FileTransfer,
