@@ -28,7 +28,8 @@ export class DoacaoService{
 				data.voluntariado = true;
 				break;
 		}
-		return this.http.post(Globals.apiUrl+'donate.php', data).toPromise().then(result => {
+
+		return this.http.post(Globals.apiUrl+'donate.php', JSON.stringify(data)).toPromise().then(result => {
 			console.log(result);
 			return Promise.resolve(result); 
 		},
