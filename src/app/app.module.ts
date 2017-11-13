@@ -5,9 +5,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
 import {GoogleMaps} from '@ionic-native/google-maps';
+import {Geolocation} from '@ionic-native/geolocation';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { Camera } from '@ionic-native/camera';
 import { ActionSheetController } from 'ionic-angular';
+import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
 
 import { MyApp } from './app.component';
@@ -28,6 +30,7 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
 import { EdicaoPage } from '../pages/edicao/edicao';
 import { DonateinfoPage } from '../pages/donateinfo/donateinfo';
 import { VolunteerinfoPage } from '../pages/volunteerinfo/volunteerinfo';
+import { AddressMapPage } from '../pages/address-map/address-map';
 import { InstituicaoService } from './service/instituicao.service';
 import { AuthService } from './service/auth.service';
 import { ImagemService } from './service/imagem.service';
@@ -52,7 +55,8 @@ import { DoacaoService } from './service/doacao.service';
     LoginPage,
     CadastroPage,
     DonateinfoPage,
-    VolunteerinfoPage
+    VolunteerinfoPage,
+    AddressMapPage
   ],
   imports: [
     BrowserModule,
@@ -80,13 +84,16 @@ import { DoacaoService } from './service/doacao.service';
     LoginPage,
     CadastroPage,
     DonateinfoPage,
-    VolunteerinfoPage
+    VolunteerinfoPage,
+    AddressMapPage
    ],
   providers: [
     InstituicaoService,
     ImagemService,
     DoacaoService,
     GoogleMaps,
+    Geolocation,
+    NativeGeocoder,
     Camera,
     FileTransfer,
     AuthService,

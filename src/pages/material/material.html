@@ -43,9 +43,10 @@
 
 		<ion-item>
 			<ion-label>Novo endereço</ion-label>
-			<ion-radio value="novo_endereco"></ion-radio>
+			<ion-radio (click)="showMap()" value="novo_endereco"></ion-radio>
 		</ion-item>
 	</ion-list>
+
 
 	<h6>Melhor data e horário de coleta</h6>
 
@@ -67,7 +68,7 @@
 	<button ion-button type="submit" block class="btn">Concluir</button>
 
 	</ion-list>
-</form>
+</form> 	
 <br>
 <br>
 <br>
