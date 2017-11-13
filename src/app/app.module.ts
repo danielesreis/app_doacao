@@ -5,9 +5,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
 import {GoogleMaps} from '@ionic-native/google-maps';
+import {Geolocation} from '@ionic-native/geolocation';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { Camera } from '@ionic-native/camera';
 import { ActionSheetController } from 'ionic-angular';
+import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
 
 import { MyApp } from './app.component';
@@ -87,6 +89,8 @@ import { DoacaoService } from './service/doacao.service';
     ImagemService,
     DoacaoService,
     GoogleMaps,
+    Geolocation,
+    NativeGeocoder,
     Camera,
     FileTransfer,
     AuthService,
