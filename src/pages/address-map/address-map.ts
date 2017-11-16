@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, ViewController } from 'ionic-angular';
 import {GoogleMaps, GoogleMap, GoogleMapOptions, CameraPosition, MarkerOptions, Marker, GoogleMapsEvent} from '@ionic-native/google-maps';
 import {Geolocation} from '@ionic-native/geolocation';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
@@ -13,13 +13,13 @@ import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResul
 export class AddressMapPage implements OnInit{
 
 	map: GoogleMap;
-
-	constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps:GoogleMaps, private geolocation: Geolocation, private geocoder: NativeGeocoder){
+  address: Object;
+	constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps:GoogleMaps, private geolocation: Geolocation, private geocoder: NativeGeocoder, public viewCtrl: ViewController){
 
 	}
 
 	ngOnInit(){
-		this.loadMap();
+    this.loadMap();
 	}
 
 	loadMap(){
@@ -34,7 +34,7 @@ export class AddressMapPage implements OnInit{
            tilt: 30
          }
        };
-       this.map = this.googleMaps.create('map_canvas', mapOptions);
+       this.map = GoogleMaps.create('map_canvas', mapOptions);
 
        // Wait the MAP_READY before using any methods.
        this.map.one(GoogleMapsEvent.MAP_READY)
@@ -51,11 +51,19 @@ export class AddressMapPage implements OnInit{
                }
              })
            .then(marker => {
-             marker.showInfoWindow();
+             this.geocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude).then(addr => {
+                 this.address = addr;
+                 marker.setSnippet(addr.thoroughfare+', '+addr.subThoroughfare+'\n'+addr.subLocality+', '+addr.locality+', '+addr.administrativeArea+'\n'+addr.countryName+'\n'+addr.postalCode);
+                 marker.showInfoWindow();
+               },
+               error => {
+                 alert(JSON.stringify(error));
+               });
              this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe(coords => {
                marker.setPosition(coords[0]);
                //alert(JSON.stringify(coords[0]));
                this.geocoder.reverseGeocode(coords[0].lat, coords[0].lng).then(addr => {
+                 this.address = addr;
                  marker.setSnippet(addr.thoroughfare+', '+addr.subThoroughfare+'\n'+addr.subLocality+', '+addr.locality+', '+addr.administrativeArea+'\n'+addr.countryName+'\n'+addr.postalCode);
                  marker.showInfoWindow();
                },
@@ -64,10 +72,16 @@ export class AddressMapPage implements OnInit{
                });
              });
            })
+         }, error => {
+           alert(error.message);
          });
     }).catch((error) => {
-      console.log('Error getting location', error);
+      alert(error.message);
+      console.log(error);
     });
   
+}
+dismiss(){
+  this.viewCtrl.dismiss(this.address);
 }
 }

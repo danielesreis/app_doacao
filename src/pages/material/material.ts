@@ -5,15 +5,11 @@ import { Globals } from '../../app/globals';
 import { InstituicaoService } from '../../app/service/instituicao.service';
 import { DoacaoService } from '../../app/service/doacao.service';
 import { LoginPage } from '../login/login';
-<<<<<<< HEAD
+
 import { AddressMapPage } from '../address-map/address-map';
 
-import {PopoverController} from 'ionic-angular';
-=======
-import {GoogleMaps, GoogleMap, GoogleMapOptions, CameraPosition, MarkerOptions, Marker, GoogleMapsEvent} from '@ionic-native/google-maps';
-import {Geolocation} from '@ionic-native/geolocation';
-import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
->>>>>>> 64b6cb13844bd08e141afb242e4b3b24673fe124
+import {ModalController, Modal} from 'ionic-angular';
+
 /**
  * Generated class for the MaterialPage page.
  *
@@ -25,10 +21,12 @@ import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResul
 @Component({
   selector: 'page-material',
   templateUrl: 'material.html',
+  styles: [],
   providers: [InstituicaoService, Globals]
 })
 export class MaterialPage implements OnInit{
   instituicoes: Instituicao[];
+  show = true;
   doacao = {
     doador: null,
     instituicao: null,
@@ -40,15 +38,17 @@ export class MaterialPage implements OnInit{
     data: null,
     tipo: this.doacaoService.tipo.MATERIAL
   }
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, globals: Globals, private instituicaoService:InstituicaoService, private doacaoService: DoacaoService, private popoverCtrl: PopoverController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, globals: Globals, private instituicaoService:InstituicaoService, private doacaoService: DoacaoService, private modalCtrl: ModalController) {
 
     Globals.title = "Doação de material";
     if(!Globals.user){
       navCtrl.pop();  
       navCtrl.push(LoginPage);
     }
-    else
+    else{
+      this.doacao.endereco = Globals.user.endereco;
       this.doacao.doador = Globals.user.id;
+    }
   }
 
   ngOnInit(){
@@ -68,17 +68,23 @@ export class MaterialPage implements OnInit{
   doar(){
     console.log(this.doacao);
     this.doacaoService.doar(this.doacao).then(result => {
-      console.log(result);
+      this.navCtrl.pop();
     },
     error => {
       console.log(error);
     });
   }
 
-
+  mapModal: Modal;
   showMap(){
-    let mapPopover = this.popoverCtrl.create(AddressMapPage);
-    mapPopover.present();
+    this.mapModal = this.modalCtrl.create(AddressMapPage);
+
+    this.show = false;
+    this.mapModal.present();
+    this.mapModal.onDidDismiss((addr) => {
+      this.show = true;
+      this.doacao.endereco = addr.thoroughfare+', '+addr.subThoroughfare+'\n'+addr.subLocality+', '+addr.locality+', '+addr.administrativeArea+'\n'+addr.countryName+'\n'+addr.postalCode;
+    })
   }
 
 }

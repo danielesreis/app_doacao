@@ -4,5 +4,5 @@ export class User{
 	email: string;
 	foto: string;
 	telefone: string;
-
+	endereco: string;
 }

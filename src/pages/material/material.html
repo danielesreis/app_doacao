@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 
-<ion-content padding>
+<ion-content padding *ngIf="show">
 
 	<h6>Selecione a instituição para onde deseja enviar seu donativo</h6>
 <form (ngSubmit)="doar()" #registerForm="ngForm">
@@ -21,10 +21,10 @@
 
 		<ion-item>
 			<ion-label>Estado de conservação</ion-label>
-			<ion-select interface="popover" name="condicao" [(ngModel)]="doacao.condicao" required>
-				<ion-option value="select_status1" selected="true">Em condições de uso</ion-option>
-				<ion-option value="select_status2">Perfeito Estado</ion-option>
-				<ion-option value="select_status3">Precisa de reparos</ion-option>
+			<ion-select interface="popover" name="condicao" [(ngModel)]="doacao.estado" required>
+				<ion-option value="B" selected="true">Em condições de uso</ion-option>
+				<ion-option value="P">Perfeito Estado</ion-option>
+				<ion-option value="R">Precisa de reparos</ion-option>
 			</ion-select>
 		</ion-item>
 
@@ -35,18 +35,20 @@
 
 	<h6>Endereço de coleta</h6>
 
-	<ion-list radio-group>
+	<ion-list radio-group name="lastAddress" [(ngModel)]="doacao.lastAddress">
 		<ion-item>
 			<ion-label>Último endereço</ion-label>
-			<ion-radio value="ultimo_endereco"></ion-radio>
+			<ion-radio (click)="doacao.endereco=null" value="true"></ion-radio>
 		</ion-item>
 
 		<ion-item>
 			<ion-label>Novo endereço</ion-label>
-			<ion-radio (click)="showMap()" value="novo_endereco"></ion-radio>
+			<ion-radio (click)="showMap()" value="false" [checked]="doacao.endereco"></ion-radio>
 		</ion-item>
 	</ion-list>
-
+	<ion-item>
+		<ion-textarea name="endereco" [(ngModel)]="doacao.endereco" rows="5"></ion-textarea>
+	</ion-item>
 
 	<h6>Melhor data e horário de coleta</h6>
 
