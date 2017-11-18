@@ -22,7 +22,10 @@ import { EdicaoPage } from '../edicao/edicao';
   providers: [Globals]
 })
 export class PerfilPage {
-
+  data = Globals.user;
+  createSuccess = false;
+  inactiveNome: boolean = true;
+  inactiveEmail: boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, globals: Globals, private imagemService: ImagemService, private actionSheetCtrl: ActionSheetController, private auth: AuthService) {
   	Globals.title = "Perfil"
 
@@ -63,14 +66,27 @@ export class PerfilPage {
 
    updateUser(data){
        data.id = Globals.user.id;
-       this.auth.updateUser(data).then();
+       this.auth.updateUser(data).then(result => {this.navCtrl.push(PerfilPage);});
        // Globals.user.foto = Globals.apiUrl+'avatar/'+Globals.user.id+'.jpg';
        // localStorage.setItem("user", JSON.stringify(Globals.user));
    }
 
+  
+
    openEdicao(){
      this.navCtrl.push(EdicaoPage);
    }
+
+   edit(tipo){
+    if(tipo == 'nome'){
+      this.inactiveNome = false;
+      this.inactiveEmail = true;
+    }
+    else if(tipo == 'email'){
+      this.inactiveEmail = false;
+      this.inactiveNome = true;
+    }
+  }
 
   ionViewDidEnter(){
     this.menu.swipeEnable(true, 'menu_lateral');
