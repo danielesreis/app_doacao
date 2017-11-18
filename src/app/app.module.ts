@@ -35,6 +35,7 @@ import { InstituicaoService } from './service/instituicao.service';
 import { AuthService } from './service/auth.service';
 import { ImagemService } from './service/imagem.service';
 import { DoacaoService } from './service/doacao.service';
+import { File } from '@ionic-native/file';
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { DoacaoService } from './service/doacao.service';
     StatusBar,
     SplashScreen,
     ActionSheetController,
+    File,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

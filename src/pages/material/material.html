@@ -31,10 +31,13 @@
 	<h6>Descreva sua doação</h6>
 	<ion-input placeholder="Digite Aqui" name="descricao" [(ngModel)]="doacao.descricao" required></ion-input>
 
-	<h6>Tire uma fotografia do objeto</h6>
+	
 
+	<h6 class="btn" ion-button block (click)="getPicture()">Tire uma fotografia do objeto</h6>
+	<ion-item>
+		<ion-thumbnail item-start *ngFor="let foto of fotos"><img src="{{foto}}"></ion-thumbnail> 
+	</ion-item>
 	<h6>Endereço de coleta</h6>
-
 	<ion-list radio-group name="lastAddress" [(ngModel)]="doacao.lastAddress">
 		<ion-item>
 			<ion-label>Último endereço</ion-label>

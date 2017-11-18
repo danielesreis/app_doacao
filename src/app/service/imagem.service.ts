@@ -4,6 +4,7 @@ import { Globals } from '../globals';
 import { User } from '../user';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+
 import 'rxjs/add/operator/toPromise'
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
@@ -17,14 +18,14 @@ export class ImagemService {
 	
   constructor(private fileTransfer: FileTransfer, private camera: Camera) { }
 
-  getPicture(option, action, name):Promise<any>{
+  getPicture(option):Promise<any>{
   		let sourceType: number;
   		switch (option) {
   			case "camera":
   				sourceType = this.camera.PictureSourceType.CAMERA;
   				break;
   			case "galeria":
-  				sourceType = this.camera.PictureSourceType.PHOTOLIBRARY;
+  				sourceType = this.camera.PictureSourceType.SAVEDPHOTOALBUM;
   				break;
   		}
       const options: CameraOptions = {
@@ -34,18 +35,11 @@ export class ImagemService {
         encodingType: this.camera.EncodingType.JPEG,
         mediaType: this.camera.MediaType.PICTURE
       }
-      return this.camera.getPicture(options).then((imageData) => {
-       // imageData is either a base64 encoded string or a file URI
-       // If it's base64:
-       return this.upload(imageData, action, name).then(result => {return Promise.resolve(result);});
-      
-      }, (err) => {
-       return Promise.resolve(err);
-      });
+      return this.camera.getPicture(options).then(result => {return result;}, error => {alert("paradaerrada");});
     }
    
 
-   upload(file, action, name):Promise<boolean> {
+   upload(file, action, name):Promise<any> {
      const transfer: FileTransferObject = this.fileTransfer.create();
      let options: FileUploadOptions = {
         fileKey: 'file',

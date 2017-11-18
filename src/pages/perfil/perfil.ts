@@ -38,12 +38,22 @@ export class PerfilPage {
              {
                text: 'Câmera',
                handler: () => {
-                 this.imagemService.getPicture('camera', 'updateAvatar', Globals.user.id+'.jpg').then(result => {if(result) this.updateUser({foto: result.url});});
+                 this.imagemService.getPicture('camera').then(imageData => {
+                   this.imagemService.upload(imageData, 'updateAvatar', Globals.user.id+'.jpg').then(result => {
+                     if(result) this.updateUser({foto: result.url});  
+                   });
+                   
+                 });
                }
              },{
                text: 'Galeria',
                handler: () => {
-                 this.imagemService.getPicture('galeria', 'updateAvatar', Globals.user.id+'.jpg').then(result => {if(result) this.updateUser({foto: result.url});});
+                 this.imagemService.getPicture('galeria').then(imageData => {
+                   this.imagemService.upload(imageData, 'updateAvatar', Globals.user.id+'.jpg').then(result => {
+                     if(result) this.updateUser({foto: result.url});  
+                   });
+                   
+                 });
                }
              }
            ]
