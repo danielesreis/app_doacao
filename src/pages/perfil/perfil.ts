@@ -26,6 +26,7 @@ export class PerfilPage {
   createSuccess = false;
   inactiveNome: boolean = true;
   inactiveEmail: boolean = true;
+  inactiveTelefone: boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, globals: Globals, private imagemService: ImagemService, private actionSheetCtrl: ActionSheetController, private auth: AuthService) {
   	Globals.title = "Perfil"
 
@@ -43,7 +44,8 @@ export class PerfilPage {
                handler: () => {
                  this.imagemService.getPicture('camera').then(imageData => {
                    this.imagemService.upload(imageData, 'updateAvatar', Globals.user.id+'.jpg').then(result => {
-                     if(result) this.updateUser({foto: result.url});  
+                     this.data.foto = result.url;
+                     if(result) this.updateUser();  
                    });
                    
                  });
@@ -53,7 +55,8 @@ export class PerfilPage {
                handler: () => {
                  this.imagemService.getPicture('galeria').then(imageData => {
                    this.imagemService.upload(imageData, 'updateAvatar', Globals.user.id+'.jpg').then(result => {
-                     if(result) this.updateUser({foto: result.url});  
+                     this.data.foto = result.url;
+                     if(result) this.updateUser();  
                    });
                    
                  });
@@ -64,9 +67,12 @@ export class PerfilPage {
          actionSheet.present();
   }
 
-   updateUser(data){
-       data.id = Globals.user.id;
-       this.auth.updateUser(data).then(result => {this.navCtrl.push(PerfilPage);});
+   updateUser(){
+       this.auth.updateUser(this.data).then(result => {
+         this.inactiveEmail = true;
+         this.inactiveNome = true;
+         this.inactiveTelefone = true;
+       });
        // Globals.user.foto = Globals.apiUrl+'avatar/'+Globals.user.id+'.jpg';
        // localStorage.setItem("user", JSON.stringify(Globals.user));
    }
@@ -81,10 +87,17 @@ export class PerfilPage {
     if(tipo == 'nome'){
       this.inactiveNome = false;
       this.inactiveEmail = true;
+      this.inactiveTelefone = true;
     }
     else if(tipo == 'email'){
       this.inactiveEmail = false;
       this.inactiveNome = true;
+      this.inactiveTelefone = true;
+    }
+    else if(tipo == 'telefone'){
+      this.inactiveEmail = true;
+      this.inactiveNome = true;
+      this.inactiveTelefone = false;
     }
   }
 

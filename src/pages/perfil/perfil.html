@@ -13,27 +13,28 @@
 			<button class="avatarButton" (click)="getPicture()"><ion-icon name="camera"></ion-icon></button>
 	<br>
 
-	<form (ngSubmit)="updateUser(data)" #registerForm="ngForm">
+	<form (ngSubmit)="updateUser()" #registerForm="ngForm">
     <ion-list>
 		<br>
       <ion-item>
       	<ion-label>Nome:</ion-label>
         <ion-input type="text" name="nome" [(ngModel)]="data.nome" required [disabled]="inactiveNome" ></ion-input>
-       	<button ion-button clear item-right><ion-icon name="create"  (click)="edit('nome')" ></ion-icon></button> 
+       	<span ion-button clear item-right><ion-icon name="create"  (click)="edit('nome')" ></ion-icon></span> 
       </ion-item>
       <ion-item>
       	<ion-label>Email:</ion-label>
         <ion-input type="text" name="email" [(ngModel)]="data.email" required [disabled]="inactiveEmail"></ion-input>
-        <button ion-button clear item-right><ion-icon name="create"  (click)="edit('email')" ></ion-icon></button> 
+        <span ion-button clear item-right><ion-icon name="create"  (click)="edit('email')" ></ion-icon></span> 
       </ion-item>
       <ion-item>
       	<ion-label>Telefone:</ion-label>
-        <ion-input placeholder="Telefone" name="telefone" [(ngModel)]="data.telefone"></ion-input>
+        <ion-input placeholder="Telefone" name="telefone" [(ngModel)]="data.telefone" [disabled]="inactiveTelefone"></ion-input>
+        <span ion-button clear item-right><ion-icon name="create"  (click)="edit('telefone')" ></ion-icon></span> 
       </ion-item>
      
     </ion-list>
-  	</form>
-
 	<button ion-button color="secondary" class="btn" type="submit">Confirmar</button>
+    </form>
+
 
 </ion-content>
