@@ -7,76 +7,83 @@
 
 <ion-content padding *ngIf="show">
 
-	<h6>Selecione a instituição para onde deseja enviar seu donativo</h6>
-<form (ngSubmit)="doar()" #registerForm="ngForm">
-	<ion-list>
-		<ion-item>
-			<ion-label>Instituições</ion-label>
-			<ion-select interface="popover" name="instituicao" [(ngModel)]="doacao.instituicao">
-				<div *ngFor="let instituicao of instituicoes">
-					<ion-option value="{{instituicao.id}}" selected="true">{{instituicao.nome}}</ion-option>
+	<form (ngSubmit)="doar()" #registerForm="ngForm">
+		<ion-list>
+			<ion-item>
+				<ion-label>Produto:</ion-label>
+				<ion-input name="tipo" placeholder="cadeira, mesa, etc..." [(ngModel)]="doacao.produto" required></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Descrição:</ion-label>
+				<ion-textarea placeholder="Digite Aqui" name="descricao" rows="5" [(ngModel)]="doacao.descricao" required></ion-textarea>
+			</ion-item>
+			<ion-item>
+				<ion-label>Instituição</ion-label>
+				<ion-select interface="popover" name="instituicao" [(ngModel)]="doacao.instituicao">
+					<div *ngFor="let instituicao of instituicoes">
+						<ion-option value="{{instituicao.id}}" selected="true">{{instituicao.nome}}</ion-option>
+					</div>
+				</ion-select>
+			</ion-item>
+
+			<ion-item>
+				<ion-label>Estado de conservação</ion-label>
+				<ion-select interface="popover" name="condicao" [(ngModel)]="doacao.estado" required>
+					<ion-option value="B" selected="true">Em condições de uso</ion-option>
+					<ion-option value="P">Perfeito Estado</ion-option>
+					<ion-option value="R">Precisa de reparos</ion-option>
+				</ion-select>
+			</ion-item>
+
+			<!--h6 class="btn" ion-button block (click)="getPicture()">Tire uma fotografia do objeto</h6-->
+			<ion-item>
+				<div class="photo" *ngFor="let foto of fotos">
+					<ion-thumbnail item-start><img src="{{foto}}"></ion-thumbnail> 
 				</div>
-			</ion-select>
-		</ion-item>
+				<div class="photo">
+					 <ion-icon color="primary" (click)="getPicture()" name="add-circle" class="addPhoto"></ion-icon>
+				</div>
+			</ion-item>
+			<h6>Endereço de coleta</h6>
+			<ion-list radio-group name="lastAddress" [(ngModel)]="doacao.lastAddress">
+				<ion-item>
+					<ion-label>Último endereço</ion-label>
+					<ion-radio (click)="doacao.endereco=null" value="true"></ion-radio>
+				</ion-item>
 
-		<ion-item>
-			<ion-label>Estado de conservação</ion-label>
-			<ion-select interface="popover" name="condicao" [(ngModel)]="doacao.estado" required>
-				<ion-option value="B" selected="true">Em condições de uso</ion-option>
-				<ion-option value="P">Perfeito Estado</ion-option>
-				<ion-option value="R">Precisa de reparos</ion-option>
-			</ion-select>
-		</ion-item>
+				<ion-item>
+					<ion-label>Novo endereço</ion-label>
+					<ion-radio (click)="showMap()" value="false" [checked]="doacao.endereco"></ion-radio>
+				</ion-item>
+			</ion-list>
+			<ion-item>
+				<ion-textarea name="endereco" [(ngModel)]="doacao.endereco" rows="5"></ion-textarea>
+			</ion-item>
 
-	<h6>Descreva sua doação</h6>
-	<ion-input placeholder="Digite Aqui" name="descricao" [(ngModel)]="doacao.descricao" required></ion-input>
+			<h6>Melhor data e horário de coleta</h6>
 
-	
+			<ion-item>
+				<ion-label>Dia</ion-label>
+				<ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD-MM-YYYY"></ion-datetime>
+			</ion-item>
 
-	<h6 class="btn" ion-button block (click)="getPicture()">Tire uma fotografia do objeto</h6>
-	<ion-item>
-		<ion-thumbnail item-start *ngFor="let foto of fotos"><img src="{{foto}}"></ion-thumbnail> 
-	</ion-item>
-	<h6>Endereço de coleta</h6>
-	<ion-list radio-group name="lastAddress" [(ngModel)]="doacao.lastAddress">
-		<ion-item>
-			<ion-label>Último endereço</ion-label>
-			<ion-radio (click)="doacao.endereco=null" value="true"></ion-radio>
-		</ion-item>
+			<ion-item>
+				<ion-label>Hora inicial</ion-label>
+				<ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+			</ion-item>
 
-		<ion-item>
-			<ion-label>Novo endereço</ion-label>
-			<ion-radio (click)="showMap()" value="false" [checked]="doacao.endereco"></ion-radio>
-		</ion-item>
-	</ion-list>
-	<ion-item>
-		<ion-textarea name="endereco" [(ngModel)]="doacao.endereco" rows="5"></ion-textarea>
-	</ion-item>
+			<ion-item>
+				<ion-label>Hora final</ion-label>
+				<ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+			</ion-item>
+			<br>
+			<button ion-button type="submit" block class="btn">Concluir</button>
 
-	<h6>Melhor data e horário de coleta</h6>
+		</ion-list>
 
-	<ion-item>
-	  <ion-label>Dia</ion-label>
-	  <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD-MM-YYYY"></ion-datetime>
-	</ion-item>
+	</form> 	
 
-	<ion-item>
-	  <ion-label>Hora inicial</ion-label>
-	  <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
-	</ion-item>
-
-	<ion-item>
-	  <ion-label>Hora final</ion-label>
-	  <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
-	</ion-item>
-
-	<button ion-button type="submit" block class="btn">Concluir</button>
-
-	</ion-list>
-
-</form> 	
-
-<br>
-<br>
-<br>
+	<br>
+	<br>
+	<br>
 </ion-content>

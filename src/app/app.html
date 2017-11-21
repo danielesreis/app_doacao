@@ -1,36 +1,42 @@
 <ion-header>
-<ion-navbar hideBackButton>
-  <button id="btn" ion-button menuToggle icon-only item-left><ion-icon name="menu"></ion-icon></button>
+	<ion-navbar hideBackButton>
+		<button id="btn" ion-button menuToggle icon-only item-left><ion-icon name="menu"></ion-icon></button>
   	<!-- <ion-buttons end>
   		<button ion-button icon-only menuClose="menu_lateral" (click)="openPopover($event)">
   			<ion-icon name="search"></ion-icon>
   		</button> 
   	</ion-buttons> -->
-    <ion-title ><span class="white">{{title}}</span></ion-title>
+  	<ion-title ><span class="white">{{title}}</span></ion-title>
   </ion-navbar>
 </ion-header>
 <ion-nav #mycontent [root]="rootPage"></ion-nav>
 <ion-menu id="menu_lateral" [content]="mycontent" persistent="true">
 	<ion-content>
 		<ion-list>
-			<div>
-				<div *ngIf="user; else elseBlock">
-					<div (click)="showPerfil()" menuClose>
-						<div id="profile_picDiv">
-							<img *ngIf="user.foto; else iconProfile" id="profile_pic" src="{{user.foto}}">
-							<ng-template #iconProfile><ion-icon name="person" style="font-size: 100px; line-height: 150px; border: 5px solid #FFF9ED; color: #FFF9ED; background-color: orange; border-radius: 50%; width: 150px; height: 150px;"></ion-icon></ng-template>
-						</div>
-						<button ion-item menuClose ><ion-icon name="person"></ion-icon>Meu Perfil</button>
-					</div>
-					<button ion-item menuClose (click)="showPontos()"><ion-icon name="medal"></ion-icon>Meus Pontos</button>
-					<button ion-item menuClose (click)="showHistorico()"><ion-icon name="list"></ion-icon>Histórico de doações</button>
-					<button ion-item menuClose (click)="logout()"><ion-icon name="log-out"></ion-icon>Sair</button>
+			<br>
+			<div *ngIf="user; else elseBlock" (click)="showPerfil()" menuClose>
+				<div id="profile_picDiv">
+					<img *ngIf="user.foto; else iconProfile" id="profile_pic" src="{{user.foto}}">
+					<ng-template #iconProfile><ion-icon name="person" style="font-size: 100px; line-height: 150px; border: 5px solid #FFF9ED; color: #FFF9ED; background-color: orange; border-radius: 50%; width: 150px; height: 150px;"></ion-icon></ng-template>
 				</div>
-				<ng-template  #elseBlock><h3 class="loginButton" menuClose (click)="showLogin()"><ion-icon name="log-in"></ion-icon>Login</h3></ng-template>
 			</div>
-			<button ion-item menuClose (click)="showHome()"><ion-icon name="home"></ion-icon>Home</button>
-			<button ion-item menuClose (click)="showSobre()"><ion-icon name="help"></ion-icon>Sobre</button>
-			<button ion-item menuClose><ion-icon name="star-half"></ion-icon>Avalie este aplicativo :-)</button>
+			<br>
+			<button ion-item menuClose (click)="showHome()"><ion-icon name="home" color="primary"></ion-icon>Home</button>
+			<button ion-item menuClose (click)="showPerfil()"><ion-icon name="person" color="primary"></ion-icon>Meu Perfil</button>
+			<button ion-item menuClose (click)="showDoar()"><ion-icon name="heart" color="primary"></ion-icon>Doar</button>
+			<!--button ion-item menuClose (click)="showPontos()"><ion-icon name="medal"></ion-icon>Meus Pontos</button-->
+			<button *ngIf="user" ion-item menuClose (click)="showHistorico()"><ion-icon name="list" color="primary"></ion-icon>Histórico de doações</button>
+
+			<ng-template  #elseBlock><h3 class="loginButton" menuClose (click)="showLogin()"><ion-icon name="log-in"></ion-icon>Login</h3></ng-template>
+			
+			
+			<button ion-item menuClose (click)="showSobre()"><ion-icon name="help" color="primary"></ion-icon>Sobre</button>
+			<button ion-item menuClose><ion-icon name="star-half" color="primary"></ion-icon>Avalie este aplicativo :-)</button>
 		</ion-list>
 	</ion-content>
+	<ion-footer>
+		<div *ngIf="user">
+			<button *ngIf="user" ion-item menuClose (click)="logout()"><ion-icon name="log-out" color="primary"></ion-icon>Sair</button>
+		</div>
+	</ion-footer>
 </ion-menu>

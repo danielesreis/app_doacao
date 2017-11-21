@@ -3,6 +3,7 @@ import { Nav, Platform, Modal, NavController, PopoverController } from 'ionic-an
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PerfilPage } from '../pages/perfil/perfil';
+import { DoarPage } from '../pages/doar/doar';
 import { PontosPage } from '../pages/pontos/pontos';
 import { HistoricoPage } from '../pages/historico/historico';
 import { SobrePage } from '../pages/sobre/sobre';
@@ -57,6 +58,10 @@ export class MyApp {
 
   showPerfil(){
     this.nav.push(PerfilPage);
+  }
+
+  showDoar(){
+    this.nav.push(DoarPage);
   }
 
   showPontos(){

@@ -39,6 +39,7 @@ export class MaterialPage implements OnInit{
     hora_inicio: null,
     hora_fim: null,
     data: null,
+    produto: null,
     tipo: this.doacaoService.tipo.MATERIAL
   }
   constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, globals: Globals, private instituicaoService:InstituicaoService, private doacaoService: DoacaoService, private modalCtrl: ModalController, private imagemService: ImagemService, public actionSheetCtrl: ActionSheetController, public file:File) {

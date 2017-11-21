@@ -5,6 +5,22 @@ page-material {
 		height: 300px;
 
 	}
+
+	.photo{
+		height: 80px;
+		width: 80px;
+		border: 1px dashed;
+		float: left;
+	}	
+
+	.addPhoto{
+		font-size: 30px;
+		height: 28px;
+		margin: auto;
+	    position: relative;
+    	top: 24px;
+    	left: 16px;
+	}
 }
 
 ion-title {
