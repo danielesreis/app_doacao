@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, Modal, NavController, PopoverController } from 'ionic-angular';
+import { Platform, NavController, PopoverController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PerfilPage } from '../pages/perfil/perfil';
@@ -7,14 +7,8 @@ import { DoarPage } from '../pages/doar/doar';
 import { PontosPage } from '../pages/pontos/pontos';
 import { HistoricoPage } from '../pages/historico/historico';
 import { SobrePage } from '../pages/sobre/sobre';
-import { InstPage } from '../pages/inst/inst';
-import { SearchPage } from '../pages/search/search';
 import { LoginPage } from '../pages/login/login';
-import { CadastroPage } from '../pages/cadastro/cadastro';
-import { DonateinfoPage } from '../pages/donateinfo/donateinfo';
-import { VolunteerinfoPage } from '../pages/volunteerinfo/volunteerinfo';
 import { Globals } from './globals';
-import { InstituicaoService } from './service/instituicao.service';
 import { AuthService } from './service/auth.service';
 
 import { HomePage } from '../pages/home/home';

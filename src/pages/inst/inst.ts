@@ -2,7 +2,7 @@ import { Component , ViewChild, OnInit} from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, Content } from 'ionic-angular';
 import { InstituicaoService } from '../../app/service/instituicao.service';
 import { Instituicao } from '../../app/Instituicao';
-import {GoogleMaps, GoogleMap, GoogleMapOptions, CameraPosition, MarkerOptions, Marker, GoogleMapsEvent} from '@ionic-native/google-maps';
+import {GoogleMaps, GoogleMap, GoogleMapOptions, GoogleMapsEvent} from '@ionic-native/google-maps';
 
 /**
  * Generated class for the InstPage page.

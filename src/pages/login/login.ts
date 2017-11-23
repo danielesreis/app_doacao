@@ -1,7 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController, ViewController, AlertController, LoadingController, Loading, MenuController } from 'ionic-angular';
 import { CadastroPage } from '../cadastro/cadastro';
-import { HomePage } from '../home/home';
 import { MyApp } from '../../app/app.component';
 import { AuthService } from '../../app/service/auth.service';
 import { Globals } from '../../app/globals';

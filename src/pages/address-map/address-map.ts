@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, ViewController } from 'ionic-angular';
-import {GoogleMaps, GoogleMap, GoogleMapOptions, CameraPosition, MarkerOptions, Marker, GoogleMapsEvent} from '@ionic-native/google-maps';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import {GoogleMaps, GoogleMap, GoogleMapOptions, GoogleMapsEvent} from '@ionic-native/google-maps';
 import {Geolocation} from '@ionic-native/geolocation';
-import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
+import { NativeGeocoder} from '@ionic-native/native-geocoder';
 
 @IonicPage()
 @Component({
@@ -14,7 +14,7 @@ export class AddressMapPage implements OnInit{
 
 	map: GoogleMap;
   address: Object;
-	constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps:GoogleMaps, private geolocation: Geolocation, private geocoder: NativeGeocoder, public viewCtrl: ViewController){
+	constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private geocoder: NativeGeocoder, public viewCtrl: ViewController){
 
 	}
 
