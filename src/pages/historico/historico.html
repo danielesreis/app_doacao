@@ -14,8 +14,8 @@
  		<ion-card-header>{{instituicao.nome}}</ion-card-header>
  		<ion-card-content>
  			<ion-list>
- 				<ion-item *ngFor="let doacao of doacoes">
- 					<ion-icon class="{{doacao.tipo}}" name="square" item-left color="material"></ion-icon>
+ 				<ion-item *ngFor="let doacao of instituicao.doacoes">
+ 					<ion-icon  name="square" item-left color="{{doacao.material && 'material' || 'voluntario'}}"></ion-icon>
  					<span>{{doacao.produto}}</span>
  					<span class="data">{{doacao.data}}</span>
  				</ion-item>

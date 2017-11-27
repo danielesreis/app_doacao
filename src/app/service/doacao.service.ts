@@ -16,6 +16,13 @@ export class DoacaoService{
 
 	tipo= Tipo;
 
+	public getDoacao(id){
+		return this.http.get(Globals.apiUrl+'getUserDonations.php?id='+id).toPromise().then(result => {
+			console.log(result);
+			return Promise.resolve(result);
+		})
+	}
+
 	public doar(data): Promise<any>{
 		data.voluntariado = false;
 		data.material = false;
